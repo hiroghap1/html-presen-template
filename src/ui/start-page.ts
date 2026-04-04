@@ -58,10 +58,12 @@ export function showStartPage(viewport: HTMLElement): Promise<DeckSource> {
             <li>
               <a href="?deck=decks/sample.md" data-deck="decks/sample.md">Marp Markdown サンプル</a>
               <a href="decks/sample.md" download="sample.md" class="start-dl" title="ダウンロード">DL</a>
+              <button type="button" class="start-prompt-btn" data-file="decks/sample.md" title="AIプロンプトをコピー">Prompt</button>
             </li>
             <li>
               <a href="?deck=decks/sample.html" data-deck="decks/sample.html">HTML デッキサンプル</a>
               <a href="decks/sample.html" download="sample.html" class="start-dl" title="ダウンロード">DL</a>
+              <button type="button" class="start-prompt-btn" data-file="decks/sample.html" title="AIプロンプトをコピー">Prompt</button>
             </li>
           </ul>
         </section>
@@ -109,6 +111,19 @@ export function showStartPage(viewport: HTMLElement): Promise<DeckSource> {
         e.preventDefault();
         const path = (link as HTMLElement).dataset.deck!;
         resolve({ type: 'url', path });
+      });
+    });
+
+    // --- Prompt copy buttons ---
+    page.querySelectorAll('.start-prompt-btn').forEach((btn) => {
+      btn.addEventListener('click', async () => {
+        const file = (btn as HTMLElement).dataset.file!;
+        const fileUrl = new URL(file, location.href).href;
+        const text = `${fileUrl}\nこのファイルを参考にプレゼン資料を作ってください。`;
+        await navigator.clipboard.writeText(text);
+        const orig = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => { btn.textContent = orig; }, 1500);
       });
     });
   });

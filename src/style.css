@@ -324,3 +324,19 @@ html, body {
   border-color: var(--slide-accent);
   color: var(--slide-accent) !important;
 }
+
+.start-prompt-btn {
+  font-size: 0.7rem;
+  padding: 0.15rem 0.4rem;
+  border: 1px solid var(--slide-border);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--slide-muted);
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.start-prompt-btn:hover {
+  border-color: var(--slide-accent);
+  color: var(--slide-accent);
+}
