@@ -62,10 +62,11 @@ export class SlideEngine {
     }
   }
 
-  goTo(index: number): void {
+  goTo(index: number, updateHash = true): void {
     if (index < 0 || index >= this.slideCount) return;
     this._currentIndex = index;
     this._currentFragment = 0;
+    if (updateHash) this.syncHash();
     this.emit('slidechange');
   }
 
@@ -81,7 +82,38 @@ export class SlideEngine {
   }
 
   private emit(event: SlideEvent): void {
+    if (event === 'slidechange') this.syncHash();
     this.listeners.get(event)?.forEach((fn) => fn());
+  }
+
+  /** Write current page number to location.hash (1-based) */
+  private syncHash(): void {
+    const page = this._currentIndex + 1;
+    history.replaceState(null, '', `#${page}`);
+  }
+
+  /** Read initial page from hash, and listen for hash changes */
+  initHash(): void {
+    const initial = this.parseHash();
+    if (initial !== null) {
+      this.goTo(initial, false);
+    }
+
+    window.addEventListener('hashchange', () => {
+      const idx = this.parseHash();
+      if (idx !== null && idx !== this._currentIndex) {
+        this._currentIndex = idx;
+        this._currentFragment = 0;
+        this.emit('slidechange');
+      }
+    });
+  }
+
+  private parseHash(): number | null {
+    const hash = location.hash.replace('#', '');
+    const n = parseInt(hash, 10);
+    if (isNaN(n) || n < 1 || n > this.slideCount) return null;
+    return n - 1;
   }
 
   initKeyboard(): void {

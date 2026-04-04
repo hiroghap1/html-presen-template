@@ -1,6 +1,6 @@
 import type { Deck, DeckFormat } from '../types';
-import { loadMarpDeck } from './marp-loader';
-import { loadHtmlDeck } from './html-loader';
+import { loadMarpDeck, parseMarpText } from './marp-loader';
+import { loadHtmlDeck, parseHtmlText } from './html-loader';
 
 export function detectFormat(path: string): DeckFormat {
   if (path.endsWith('.md') || path.endsWith('.markdown')) return 'marp';
@@ -14,5 +14,15 @@ export async function loadDeck(path: string): Promise<Deck> {
       return loadMarpDeck(path);
     case 'html':
       return loadHtmlDeck(path);
+  }
+}
+
+export function loadDeckFromText(text: string, fileName: string): Deck {
+  const format = detectFormat(fileName);
+  switch (format) {
+    case 'marp':
+      return parseMarpText(text);
+    case 'html':
+      return parseHtmlText(text);
   }
 }

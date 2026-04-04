@@ -5,7 +5,10 @@ export async function loadHtmlDeck(path: string): Promise<Deck> {
   const res = await fetch(path);
   if (!res.ok) throw new Error(`Failed to load deck: ${path} (${res.status})`);
   const html = await res.text();
+  return parseHtmlText(html);
+}
 
+export function parseHtmlText(html: string): Deck {
   const parser = new DOMParser();
   const doc = parser.parseFromString(html, 'text/html');
 
