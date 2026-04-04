@@ -6,6 +6,7 @@ import type { SlideRenderer } from '../renderer/slide-renderer';
 import { Timer } from './timer';
 import { printDeck } from './print';
 import { HelpOverlay } from './help';
+import { PresenterView } from './presenter';
 
 interface ControlsDeps {
   engine: SlideEngine;
@@ -44,11 +45,18 @@ export function initControls(
   updateCounter();
   engine.on('slidechange', updateCounter);
 
-  // Theme
+  // Theme (light/dark)
   const themeBtn = btn(
     theme.mode === 'dark' ? 'Light' : 'Dark',
     'テーマ切替 (T)',
     () => { theme.toggle(); themeBtn.textContent = theme.mode === 'dark' ? 'Light' : 'Dark'; },
+  );
+
+  // Custom theme preset
+  const customThemeBtn = btn(
+    theme.customTheme,
+    'カスタムテーマ切替',
+    async () => { customThemeBtn.textContent = await theme.cyclePreset(); },
   );
 
   // Grid (with Print inside)
@@ -124,11 +132,14 @@ export function initControls(
     return s;
   }
 
+  // Presenter view
+  const presenter = new PresenterView(engine);
+
   // --- Layout ---
   container.append(
     counter, timer.inlineElement,
     sep(),
-    themeBtn, progBtn, transBtn,
+    themeBtn, customThemeBtn, progBtn, transBtn,
     sep(),
     cameraBtn, shapeBtn, sizeBtn,
     sep(),
@@ -137,7 +148,8 @@ export function initControls(
     gridBtn, helpBtn, fsBtn,
   );
 
-  // === Print button inside grid overlay ===
+  // === Grid overlay actions ===
+  grid.addAction('Presenter', () => presenter.open());
   grid.addAction('Print / PDF', () => {
     const viewport = document.getElementById('slide-viewport')!;
     printDeck(engine, viewport);

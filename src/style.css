@@ -73,6 +73,15 @@ html, body {
   transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
+/* Code blocks (Shiki) */
+.slide-content pre.shiki {
+  border-radius: 8px;
+  padding: 1em 1.2em;
+  overflow-x: auto;
+  font-size: 0.85em;
+  line-height: 1.6;
+}
+
 /* Slide transitions */
 
 /* --- Slide --- */
@@ -406,6 +415,35 @@ html, body {
 .start-prompt-btn:hover {
   border-color: var(--slide-accent);
   color: var(--slide-accent);
+}
+
+.start-theme-hint {
+  font-size: 0.78rem;
+  color: var(--slide-muted);
+  margin: 0 0 0.5rem;
+}
+
+.start-theme-hint code {
+  background: var(--slide-code-bg, #f1f5f9);
+  padding: 0.1em 0.3em;
+  border-radius: 3px;
+  font-size: 0.85em;
+}
+
+.start-theme-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.start-theme-chip {
+  padding: 0.25rem 0.6rem;
+  border: 1px solid var(--slide-border);
+  border-radius: 999px;
+  font-size: 0.78rem;
+  color: var(--slide-muted);
+  cursor: default;
+  user-select: all;
 }
 
 /* ========== Help Overlay ========== */

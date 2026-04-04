@@ -1,0 +1,32 @@
+/* Nature — 自然をイメージしたグリーンテーマ */
+[data-theme="light"] {
+  --slide-bg: #f0fdf4;
+  --slide-text: #365314;
+  --slide-heading: #14532d;
+  --slide-accent: #16a34a;
+  --slide-code-bg: #dcfce7;
+  --slide-code-text: #166534;
+  --slide-border: #86efac;
+  --slide-muted: #4d7c0f;
+  --controls-bg: rgba(240, 253, 244, 0.9);
+  --controls-text: #365314;
+  --controls-hover: #16a34a;
+}
+
+[data-theme="dark"] {
+  --slide-bg: #052e16;
+  --slide-text: #bbf7d0;
+  --slide-heading: #dcfce7;
+  --slide-accent: #4ade80;
+  --slide-code-bg: #14532d;
+  --slide-code-text: #bbf7d0;
+  --slide-border: #166534;
+  --slide-muted: #86efac;
+  --controls-bg: rgba(5, 46, 22, 0.9);
+  --controls-text: #86efac;
+  --controls-hover: #4ade80;
+}
+
+body {
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", serif;
+}

@@ -1,0 +1,32 @@
+/* Neon — LT映えするサイバーテーマ */
+[data-theme="light"] {
+  --slide-bg: #fdf4ff;
+  --slide-text: #4a044e;
+  --slide-heading: #86198f;
+  --slide-accent: #d946ef;
+  --slide-code-bg: #fae8ff;
+  --slide-code-text: #701a75;
+  --slide-border: #e879f9;
+  --slide-muted: #a21caf;
+  --controls-bg: rgba(253, 244, 255, 0.9);
+  --controls-text: #86198f;
+  --controls-hover: #d946ef;
+}
+
+[data-theme="dark"] {
+  --slide-bg: #0a0a0a;
+  --slide-text: #e0f2fe;
+  --slide-heading: #f0abfc;
+  --slide-accent: #d946ef;
+  --slide-code-bg: #1e1e2e;
+  --slide-code-text: #e0f2fe;
+  --slide-border: #7c3aed;
+  --slide-muted: #c084fc;
+  --controls-bg: rgba(10, 10, 10, 0.9);
+  --controls-text: #c084fc;
+  --controls-hover: #d946ef;
+}
+
+body {
+  font-family: "SF Mono", "Fira Code", "Hiragino Kaku Gothic ProN", monospace;
+}

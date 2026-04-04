@@ -1,0 +1,32 @@
+/* Pop — カラフルで楽しいテーマ */
+[data-theme="light"] {
+  --slide-bg: #fffbeb;
+  --slide-text: #44403c;
+  --slide-heading: #b45309;
+  --slide-accent: #f59e0b;
+  --slide-code-bg: #fef3c7;
+  --slide-code-text: #78350f;
+  --slide-border: #fbbf24;
+  --slide-muted: #92400e;
+  --controls-bg: rgba(255, 251, 235, 0.9);
+  --controls-text: #78350f;
+  --controls-hover: #f59e0b;
+}
+
+[data-theme="dark"] {
+  --slide-bg: #292524;
+  --slide-text: #fef3c7;
+  --slide-heading: #fbbf24;
+  --slide-accent: #f59e0b;
+  --slide-code-bg: #44403c;
+  --slide-code-text: #fef3c7;
+  --slide-border: #78350f;
+  --slide-muted: #d97706;
+  --controls-bg: rgba(41, 37, 36, 0.9);
+  --controls-text: #d97706;
+  --controls-hover: #f59e0b;
+}
+
+body {
+  font-family: "Rounded Mplus 1c", "Hiragino Maru Gothic ProN", sans-serif;
+}

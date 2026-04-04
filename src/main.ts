@@ -19,6 +19,12 @@ async function main() {
   // Initialize theme early so start page also gets themed
   const theme = new ThemeManager();
 
+  // Apply theme from URL parameter if specified
+  const themeParam = params.get('theme');
+  if (themeParam) {
+    theme.setCustomTheme(themeParam);
+  }
+
   if (deckPath) {
     // Direct deck load via URL parameter
     await startPresentation(deckPath, viewport, cameraContainer, controlsContainer, theme);

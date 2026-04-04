@@ -3,7 +3,7 @@ const SHORTCUTS = [
   { key: '← ↑', desc: '前のスライド / フラグメント' },
   { key: 'Home / End', desc: '最初 / 最後のスライドへ' },
   { key: 'F', desc: 'フルスクリーン切替' },
-  { key: 'G', desc: 'スライド一覧' },
+  { key: 'G', desc: 'スライド一覧（Print / Presenterもここから）' },
   { key: 'T', desc: 'テーマ切替（ライト/ダーク）' },
   { key: 'C', desc: 'カメラ ON/OFF' },
   { key: 'P', desc: 'プログレスバー表示/非表示' },

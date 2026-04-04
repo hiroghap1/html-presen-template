@@ -67,6 +67,19 @@ export function showStartPage(viewport: HTMLElement): Promise<DeckSource> {
             </li>
           </ul>
         </section>
+
+        <section class="start-section">
+          <h2>テーマ</h2>
+          <p class="start-theme-hint">URLパラメータ <code>?theme=テーマ名</code> で適用（例: <code>?deck=decks/sample.md&theme=neon</code>）</p>
+          <div class="start-theme-list">
+            <span class="start-theme-chip" data-theme-preview="default">Default</span>
+            <span class="start-theme-chip" data-theme-preview="corporate">Corporate</span>
+            <span class="start-theme-chip" data-theme-preview="pop">Pop</span>
+            <span class="start-theme-chip" data-theme-preview="minimal">Minimal</span>
+            <span class="start-theme-chip" data-theme-preview="nature">Nature</span>
+            <span class="start-theme-chip" data-theme-preview="neon">Neon</span>
+          </div>
+        </section>
       </div>
     `;
 

@@ -1,5 +1,6 @@
 import { SlideEngine } from '../engine/slide-engine';
 import { applyFragmentState } from '../engine/fragment';
+import { highlightCode } from './code-highlight';
 
 export type TransitionType = 'slide' | 'fade' | 'zoom' | 'none';
 export const TRANSITIONS: TransitionType[] = ['slide', 'fade', 'zoom', 'none'];
@@ -85,6 +86,7 @@ export class SlideRenderer {
       this.swapContent(html);
       this.assignTransitionNames(this.viewport, sharedSrcs);
       this.applyFragments();
+      this.applyHighlight();
     });
   }
 
@@ -101,6 +103,7 @@ export class SlideRenderer {
     this.viewport.innerHTML = '';
     this.viewport.appendChild(wrapper);
     this.applyFragments();
+    this.applyHighlight();
 
     if (animClass) {
       wrapper.addEventListener(
@@ -166,6 +169,13 @@ export class SlideRenderer {
     const content = this.viewport.querySelector('.slide-content');
     if (content) {
       applyFragmentState(content, this.engine.currentFragment);
+    }
+  }
+
+  private applyHighlight(): void {
+    const content = this.viewport.querySelector('.slide-content');
+    if (content) {
+      highlightCode(content);
     }
   }
 }
