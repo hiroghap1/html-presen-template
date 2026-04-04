@@ -176,6 +176,21 @@ export function initControls(
     const viewport = document.getElementById('slide-viewport')!;
     printDeck(engine, viewport);
   });
+  grid.addAction('Share', () => {
+    const url = new URL(location.href);
+    url.hash = String(engine.currentIndex + 1);
+    navigator.clipboard.writeText(url.toString()).then(() => {
+      const toast = document.createElement('div');
+      toast.className = 'share-copied-toast';
+      toast.textContent = 'Copied!';
+      document.body.appendChild(toast);
+      requestAnimationFrame(() => toast.classList.add('visible'));
+      setTimeout(() => {
+        toast.classList.remove('visible');
+        setTimeout(() => toast.remove(), 200);
+      }, 1500);
+    }).catch(() => {});
+  });
 
   // === Toolbar visibility ===
   let hideTimerId: ReturnType<typeof setTimeout> | null = null;

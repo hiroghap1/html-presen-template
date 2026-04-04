@@ -8,7 +8,8 @@
       "Bash(npx tsc:*)",
       "Bash(npx vite:*)",
       "Bash(mkdir -p public)",
-      "Bash(mv decks:*)"
+      "Bash(mv decks:*)",
+      "Bash(afplay:*)"
     ]
   }
 }

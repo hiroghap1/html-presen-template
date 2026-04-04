@@ -707,3 +707,79 @@ section pre.shiki code {
   border-top: 1px solid var(--slide-border);
   font-variant-numeric: tabular-nums;
 }
+
+/* ========== Responsive scaling ========== */
+@media (max-width: 768px) {
+  .slide-content > section {
+    max-width: 100%;
+    padding: 1.5rem 1.5rem;
+    font-size: clamp(0.85rem, 2.5vw, 1rem);
+  }
+
+  #slide-viewport {
+    padding-bottom: 2rem;
+  }
+
+  /* Grid thumbnails: fewer columns on small screens */
+  .grid-container {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 0.6rem;
+    padding: 1rem;
+  }
+
+  .grid-action-bar {
+    right: 1rem;
+    top: 0.5rem;
+  }
+
+  .grid-action-btn {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.7rem;
+  }
+
+  /* Toolbar: smaller gap and font */
+  #controls {
+    gap: 0.4rem;
+    padding: 0.5rem 0.6rem;
+    font-size: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .ctrl-btn {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .slide-content > section {
+    padding: 1rem 1rem;
+    font-size: clamp(0.78rem, 3vw, 0.92rem);
+  }
+
+  .grid-container {
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 0.4rem;
+    padding: 0.75rem;
+  }
+}
+
+/* Share copied feedback */
+.share-copied-toast {
+  position: fixed;
+  top: 3.5rem;
+  right: 2rem;
+  padding: 0.5rem 1rem;
+  background: var(--slide-accent);
+  color: #fff;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  z-index: 400;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+.share-copied-toast.visible {
+  opacity: 1;
+}
