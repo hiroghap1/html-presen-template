@@ -41,7 +41,7 @@ ABCDの英字と「かな漢字」の混植も美しく表示されます。
 
 ---
 
-## コードブロック
+## コードブロック — JavaScript
 
 ```javascript
 const marp = new Marp({ html: true });
@@ -49,6 +49,70 @@ const { html, css } = marp.render(markdown);
 
 // ブラウザ上でリアルタイムに変換
 document.body.innerHTML = html;
+```
+
+---
+
+## コードブロック — TypeScript
+
+```typescript
+interface Slide {
+  html: string;
+  notes?: string;
+  fragmentCount: number;
+}
+
+async function loadDeck(path: string): Promise<Slide[]> {
+  const res = await fetch(path);
+  const md = await res.text();
+  return parseMarp(md);
+}
+```
+
+---
+
+## コードブロック — HTML / CSS
+
+```html
+<article data-slide-deck>
+  <section>
+    <h1>スライド 1</h1>
+    <p>section 要素 = 1 ページ</p>
+  </section>
+  <section>
+    <h2>スライド 2</h2>
+  </section>
+</article>
+```
+
+---
+
+## コードブロック — Python
+
+```python
+from pathlib import Path
+import markdown
+
+def render_slides(path: str) -> list[str]:
+    """Markdownファイルをスライドに分割"""
+    text = Path(path).read_text()
+    pages = text.split("\n---\n")
+    return [markdown.markdown(p) for p in pages]
+```
+
+---
+
+## コードブロック — Bash
+
+```bash
+# 開発サーバー起動
+npm run dev
+
+# 本番ビルド
+npm run build
+
+# GitHub Pages へデプロイ
+git push origin main
 ```
 
 ---

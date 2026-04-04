@@ -73,8 +73,28 @@ html, body {
   transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-/* Code blocks (Shiki) */
-.slide-content pre.shiki {
+/* Code blocks (Shiki) — override Marp/deck CSS and Shiki inline styles */
+.slide-content pre.shiki,
+section pre.shiki {
+  background-color: var(--slide-code-bg) !important;
+  border-radius: 8px !important;
+  padding: 1em 1.2em !important;
+  overflow-x: auto !important;
+  font-size: 0.85em !important;
+  line-height: 1.6 !important;
+}
+
+/* Inner code element: transparent so pre background shows through */
+.slide-content pre.shiki code,
+section pre.shiki code {
+  background: transparent !important;
+  padding: 0 !important;
+}
+
+/* Fallback for non-Shiki code blocks */
+.slide-content pre:not(.shiki) {
+  background: var(--slide-code-bg);
+  color: var(--slide-code-text);
   border-radius: 8px;
   padding: 1em 1.2em;
   overflow-x: auto;

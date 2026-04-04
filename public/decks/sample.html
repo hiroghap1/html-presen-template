@@ -31,6 +31,10 @@
       border-radius: 4px;
       font-size: 0.9em;
     }
+    section pre.shiki code {
+      background: transparent;
+      padding: 0;
+    }
   </style>
 </head>
 <body>
@@ -68,6 +72,16 @@
       <h2>View Transition デモ（2/2）</h2>
       <img src="https://picsum.photos/id/10/400/250" alt="サンプル画像" style="border-radius:8px; width:600px;" />
       <p>同じ画像が滑らかにアニメーションします。</p>
+    </section>
+
+    <section>
+      <h2>コードブロック</h2>
+      <pre><code class="language-javascript">const deck = document.querySelector('[data-slide-deck]');
+const slides = deck.querySelectorAll(':scope > section');
+
+slides.forEach((slide, i) => {
+  console.log(`Slide ${i + 1}:`, slide.textContent.trim());
+});</code></pre>
     </section>
 
     <section>
