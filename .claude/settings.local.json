@@ -10,7 +10,8 @@
       "Bash(mkdir -p public)",
       "Bash(mv decks:*)",
       "Bash(afplay:*)",
-      "Bash(npm uninstall:*)"
+      "Bash(npm uninstall:*)",
+      "Bash(npm run:*)"
     ]
   }
 }

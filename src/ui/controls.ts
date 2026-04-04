@@ -15,6 +15,7 @@ import { LaserPointer } from './laser';
 import { SlideNumber } from './slide-number';
 import { Autoplay } from './autoplay';
 import { QRCodeOverlay } from './qrcode';
+import { FontSize } from './font-size';
 
 interface ControlsDeps {
   engine: SlideEngine;
@@ -39,6 +40,7 @@ export function initControls(
   const slideNumber = new SlideNumber();
   const autoplay = new Autoplay(engine);
   const qrcode = new QRCodeOverlay();
+  const fontSize = new FontSize();
 
   /** Lock slide navigation when drawing or zooming */
   function syncNavLock() {
@@ -148,6 +150,17 @@ export function initControls(
   // Transition
   const transBtn = btn(renderer.transition, 'トランジション切替', () => {
     transBtn.textContent = renderer.cycleTransition();
+  });
+
+  // Font size
+  const fontSizeBtn = btn(fontSize.label, 'フォントサイズ (+/-/0)', () => {
+    fontSizeBtn.textContent = fontSize.reset();
+  });
+  const fontUpBtn = btn('A+', 'フォント拡大 (+)', () => {
+    fontSizeBtn.textContent = fontSize.increase();
+  });
+  const fontDownBtn = btn('A-', 'フォント縮小 (-)', () => {
+    fontSizeBtn.textContent = fontSize.decrease();
   });
 
   // Timer mode
@@ -273,7 +286,7 @@ export function initControls(
     counter, timer.inlineElement,
     autoPlayBtn,
     sep(),
-    themeBtn, customThemeBtn, progBtn, transBtn,
+    themeBtn, customThemeBtn, progBtn, transBtn, fontDownBtn, fontSizeBtn, fontUpBtn,
     sep(),
     cameraBtn, shapeBtn, sizeBtn,
     camSep,
@@ -501,6 +514,19 @@ export function initControls(
       case 'r':
         e.preventDefault();
         qrcode.toggle();
+        break;
+      case '+':
+      case ';':
+        e.preventDefault();
+        fontSizeBtn.textContent = fontSize.increase();
+        break;
+      case '-':
+        e.preventDefault();
+        fontSizeBtn.textContent = fontSize.decrease();
+        break;
+      case '0':
+        e.preventDefault();
+        fontSizeBtn.textContent = fontSize.reset();
         break;
     }
   });
