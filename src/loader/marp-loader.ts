@@ -1,9 +1,10 @@
 import Marp from '@marp-team/marp-core';
 import type { Deck, Slide } from '../types';
 import { countFragments, autoAssignFragments } from '../engine/fragment';
+import { corsFetch } from './cors-fetch';
 
 export async function loadMarpDeck(path: string): Promise<Deck> {
-  const res = await fetch(path);
+  const res = await corsFetch(path);
   if (!res.ok) throw new Error(`Failed to load deck: ${path} (${res.status})`);
   const markdown = await res.text();
   return parseMarpText(markdown);
