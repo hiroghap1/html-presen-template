@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <style>
+    @media (prefers-color-scheme: light) {
+      .bg { fill: #2563eb; }
+      .icon { fill: #ffffff; }
+    }
+    @media (prefers-color-scheme: dark) {
+      .bg { fill: #60a5fa; }
+      .icon { fill: #0f172a; }
+    }
+  </style>
+  <rect class="bg" x="2" y="4" width="28" height="24" rx="4" />
+  <polygon class="icon" points="13,10 13,22 23,16" />
+</svg>

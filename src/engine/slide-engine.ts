@@ -38,6 +38,10 @@ export class SlideEngine {
     return this.deck.title;
   }
 
+  get slides() {
+    return this.deck.slides;
+  }
+
   next(): void {
     const slide = this.currentSlide;
     if (this._currentFragment < slide.fragmentCount) {
