@@ -23,6 +23,8 @@ const SHORTCUTS = [
   { key: 'Ctrl+Z', desc: 'ペン描画を取り消し' },
   { key: 'Shift+D', desc: 'ペン描画を全クリア' },
   { key: 'Z', desc: 'ズーム（ドラッグで範囲選択→拡大、クリックで戻る）' },
+  { key: 'L', desc: 'レーザーポインター ON/OFF' },
+  { key: 'N', desc: 'スライド番号 表示/非表示' },
 ];
 
 export class HelpOverlay {

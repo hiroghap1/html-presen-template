@@ -70,6 +70,14 @@ export class DrawingOverlay {
     this.canvas.classList.remove('active');
   }
 
+  hideCanvas(): void {
+    this.canvas.classList.add('transitioning');
+  }
+
+  showCanvas(): void {
+    this.canvas.classList.remove('transitioning');
+  }
+
   clear(): void {
     this.pushUndo();
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);

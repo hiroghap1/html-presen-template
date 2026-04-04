@@ -581,6 +581,57 @@ section pre.shiki code {
   /* cursor is set dynamically by JS to reflect current pen color */
 }
 
+.drawing-overlay.transitioning {
+  opacity: 0;
+  transition: opacity 0.05s ease;
+}
+
+/* ========== Laser Pointer ========== */
+.laser-dot {
+  position: fixed;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #ef4444;
+  box-shadow: 0 0 8px 4px rgba(239, 68, 68, 0.5);
+  pointer-events: none;
+  z-index: 320;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  animation: laser-pulse 1s ease-in-out infinite;
+}
+
+.laser-dot.visible {
+  opacity: 1;
+}
+
+@keyframes laser-pulse {
+  0%, 100% { box-shadow: 0 0 8px 4px rgba(239, 68, 68, 0.5); }
+  50%      { box-shadow: 0 0 14px 6px rgba(239, 68, 68, 0.7); }
+}
+
+/* ========== Slide Number ========== */
+.slide-number {
+  position: fixed;
+  bottom: 3.5rem;
+  right: 1.5rem;
+  z-index: 150;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.85rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--slide-bg) 70%, transparent);
+  color: var(--slide-text);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.slide-number.visible {
+  opacity: 0.55;
+}
+
 /* ========== Print / PDF ========== */
 @media print {
   /* Hide UI elements */
@@ -594,7 +645,9 @@ section pre.shiki code {
   .spotlight-overlay,
   .drawing-overlay,
   .magnifier-selection,
-  .magnifier-backdrop {
+  .magnifier-backdrop,
+  .laser-dot,
+  .slide-number {
     display: none !important;
   }
 

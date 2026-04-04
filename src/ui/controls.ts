@@ -11,6 +11,8 @@ import { BlackoutOverlay } from './blackout';
 import { SpotlightOverlay } from './spotlight';
 import { DrawingOverlay } from './drawing';
 import { Magnifier } from './magnifier';
+import { LaserPointer } from './laser';
+import { SlideNumber } from './slide-number';
 
 interface ControlsDeps {
   engine: SlideEngine;
@@ -31,14 +33,24 @@ export function initControls(
   const spotlight = new SpotlightOverlay();
   const drawing = new DrawingOverlay();
   const magnifier = new Magnifier(document.getElementById('slide-viewport')!);
+  const laser = new LaserPointer();
+  const slideNumber = new SlideNumber();
 
   /** Lock slide navigation when drawing or zooming */
   function syncNavLock() {
     engine.navigationLocked = drawing.active || magnifier.active;
   }
 
-  // Sync drawing canvas with slide changes
-  engine.on('slidechange', () => drawing.onSlideChange(engine.currentIndex));
+  // Sync drawing canvas with slide changes (hide during transition to prevent flash)
+  engine.on('slidechange', () => {
+    drawing.hideCanvas();
+    drawing.onSlideChange(engine.currentIndex);
+    requestAnimationFrame(() => drawing.showCanvas());
+    slideNumber.update(engine.currentIndex + 1, engine.slideCount);
+  });
+
+  // Initial slide number
+  slideNumber.update(engine.currentIndex + 1, engine.slideCount);
 
   // --- Helper to create buttons ---
   function btn(text: string, title: string, onClick: () => void): HTMLButtonElement {
@@ -283,6 +295,7 @@ export function initControls(
     // Escape: close overlays in order
     if (e.key === 'Escape') {
       e.preventDefault();
+      if (laser.active) { laser.deactivate(); return; }
       if (drawing.active) { drawing.deactivate(); syncNavLock(); return; }
       if (magnifier.active) { magnifier.dismiss(); syncNavLock(); return; }
       if (blackout.active) { blackout.dismiss(); return; }
@@ -371,6 +384,14 @@ export function initControls(
         e.preventDefault();
         magnifier.toggle();
         syncNavLock();
+        break;
+      case 'l':
+        e.preventDefault();
+        laser.toggle();
+        break;
+      case 'n':
+        e.preventDefault();
+        slideNumber.toggle();
         break;
     }
   });
