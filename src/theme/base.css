@@ -1,0 +1,23 @@
+/* Japanese typography foundations */
+:root {
+  font-feature-settings: "palt" 1;
+  line-break: strict;
+  overflow-wrap: break-word;
+  word-break: auto-phrase;
+  text-spacing-trim: space-first;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family:
+    "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans",
+    "BIZ UDPGothic",
+    "Noto Sans JP",
+    sans-serif;
+  font-size: 16px;
+  line-height: 1.8;
+}

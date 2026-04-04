@@ -1,0 +1,13 @@
+[data-theme="dark"] {
+  --slide-bg: #0f172a;
+  --slide-text: #e2e8f0;
+  --slide-heading: #f8fafc;
+  --slide-accent: #60a5fa;
+  --slide-code-bg: #1e293b;
+  --slide-code-text: #cbd5e1;
+  --slide-border: #334155;
+  --slide-muted: #94a3b8;
+  --controls-bg: rgba(15, 23, 42, 0.85);
+  --controls-text: #cbd5e1;
+  --controls-hover: #60a5fa;
+}

@@ -1,0 +1,171 @@
+@import './theme/base.css';
+@import './theme/light.css';
+@import './theme/dark.css';
+
+/* Viewport */
+html, body {
+  height: 100%;
+  overflow: hidden;
+  background: var(--slide-bg);
+  color: var(--slide-text);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#slide-viewport {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+}
+
+/* Slide content wrapper */
+.slide-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide-content > section {
+  width: 100%;
+  max-width: 960px;
+  padding: 2rem 3rem;
+  box-sizing: border-box;
+}
+
+/* Marp slides: override default sizing for viewport fit */
+.slide-content > section[data-marpit-advanced-background] {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* Fragment animation */
+.fragment-hidden {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.fragment-visible {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Slide transitions */
+@keyframes slide-in-right {
+  from { transform: translateX(40px); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+
+@keyframes slide-in-left {
+  from { transform: translateX(-40px); opacity: 0; }
+  to   { transform: translateX(0);     opacity: 1; }
+}
+
+.slide-enter-forward {
+  animation: slide-in-right 0.3s ease forwards;
+}
+
+.slide-enter-backward {
+  animation: slide-in-left 0.3s ease forwards;
+}
+
+/* View Transitions: shared images animate position/size smoothly */
+::view-transition-old(*),
+::view-transition-new(*) {
+  animation-duration: 0.4s;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* When a shared image exists, suppress the default crossfade on the root */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+}
+
+/* Camera overlay */
+#camera-overlay {
+  position: fixed;
+  bottom: 5rem;
+  right: 1.5rem;
+  z-index: 100;
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+}
+
+.camera-video {
+  width: 240px;
+  height: 180px;
+  border-radius: 12px;
+  object-fit: cover;
+  border: 2px solid var(--slide-border);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: width 0.2s ease, height 0.2s ease, border-radius 0.2s ease;
+  display: block;
+}
+
+.camera-video.camera-circle {
+  border-radius: 50%;
+}
+
+/* Controls toolbar */
+#controls {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: var(--controls-bg);
+  backdrop-filter: blur(8px);
+  color: var(--controls-text);
+  font-size: 0.85rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 200;
+}
+
+#controls:hover,
+#controls:focus-within,
+#controls.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.ctrl-btn {
+  background: transparent;
+  border: 1px solid var(--slide-border);
+  color: var(--controls-text);
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.ctrl-btn:hover {
+  color: var(--controls-hover);
+  border-color: var(--controls-hover);
+}
+
+.ctrl-btn.active {
+  background: var(--controls-hover);
+  color: #fff;
+  border-color: var(--controls-hover);
+}
+
+.ctrl-counter {
+  font-variant-numeric: tabular-nums;
+  min-width: 4em;
+  text-align: center;
+}

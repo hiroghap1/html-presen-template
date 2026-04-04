@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>HTML デッキサンプル</title>
+  <style>
+    section {
+      font-size: 1.5rem;
+    }
+    section h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 0.75rem;
+    }
+    section p {
+      margin: 0.5rem 0;
+    }
+    section ul {
+      list-style: disc;
+      padding-left: 1.5em;
+    }
+    section li {
+      margin: 0.5rem 0;
+    }
+    section code {
+      background: var(--slide-code-bg, #f1f5f9);
+      padding: 0.15em 0.4em;
+      border-radius: 4px;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <article data-slide-deck>
+
+    <section>
+      <h1>HTML デッキのサンプル</h1>
+      <p><code>&lt;section&gt;</code> 要素がスライド 1 枚に対応します。</p>
+      <p>Markdown ではなく、素の HTML でデッキを記述できます。</p>
+    </section>
+
+    <section>
+      <h2>段階表示のデモ</h2>
+      <ul>
+        <li data-fragment="1">最初に表示される項目</li>
+        <li data-fragment="2">次に表示される項目</li>
+        <li data-fragment="3">最後に表示される項目</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>自由なHTMLマークアップ</h2>
+      <p>HTML デッキでは、任意の HTML 要素を使えます。</p>
+      <p><strong>太字</strong>、<em>斜体</em>、
+        <a href="https://example.com">リンク</a>なども自由自在。</p>
+    </section>
+
+    <section>
+      <h2>View Transition デモ（1/2）</h2>
+      <p>この画像は次のスライドにも登場します。</p>
+      <img src="https://picsum.photos/id/10/400/250" alt="サンプル画像" style="border-radius:8px;" />
+    </section>
+
+    <section>
+      <h2>View Transition デモ（2/2）</h2>
+      <img src="https://picsum.photos/id/10/400/250" alt="サンプル画像" style="border-radius:8px; width:600px;" />
+      <p>同じ画像が滑らかにアニメーションします。</p>
+    </section>
+
+    <section>
+      <h1>おわり</h1>
+      <p>URLパラメータ <code>?deck=decks/sample.html</code> で表示</p>
+    </section>
+
+  </article>
+</body>
+</html>
