@@ -100,6 +100,7 @@ function launchEngine(
   engine.on('slidechange', updateProgress);
   engine.initKeyboard();
   engine.initClickNavigation(viewport);
+  engine.initSwipeNavigation(viewport);
   engine.initHash();
   renderer.render();
   updateProgress();

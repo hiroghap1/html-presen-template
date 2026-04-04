@@ -586,6 +586,84 @@ section pre.shiki code {
   transition: opacity 0.05s ease;
 }
 
+/* ========== Auto Settings Panel ========== */
+.auto-settings-panel {
+  position: fixed;
+  z-index: 400;
+  background: var(--slide-bg);
+  border: 1px solid var(--slide-border);
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 200px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(4px);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.auto-settings-panel.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.auto-settings-panel label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+  color: var(--slide-text);
+}
+
+.auto-settings-panel label > span:first-child {
+  min-width: 6em;
+  color: var(--slide-muted);
+}
+
+.auto-settings-panel input[type="range"] {
+  flex: 1;
+  height: 4px;
+  accent-color: var(--slide-accent);
+}
+
+.auto-settings-panel .auto-slide-val,
+.auto-settings-panel .auto-frag-val {
+  min-width: 2.5em;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.75rem;
+  color: var(--slide-muted);
+}
+
+.auto-repeat-label {
+  padding-top: 0.25rem;
+  border-top: 1px solid var(--slide-border);
+}
+
+.auto-repeat-label input[type="checkbox"] {
+  accent-color: var(--slide-accent);
+}
+
+.auto-start-btn {
+  margin-top: 0.25rem;
+  padding: 0.4rem;
+  border: none;
+  border-radius: 6px;
+  background: var(--slide-accent);
+  color: #fff;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.auto-start-btn:hover {
+  opacity: 0.85;
+}
+
 /* ========== Laser Pointer ========== */
 .laser-dot {
   position: fixed;
@@ -647,7 +725,10 @@ section pre.shiki code {
   .magnifier-selection,
   .magnifier-backdrop,
   .laser-dot,
-  .slide-number {
+  .slide-number,
+  .autoplay-indicator,
+  .auto-settings-panel,
+  .qrcode-backdrop {
     display: none !important;
   }
 
@@ -918,4 +999,119 @@ body.magnifier-selecting * {
 .magnifier-backdrop.visible {
   opacity: 1;
   pointer-events: auto;
+}
+
+/* ========== Countdown Timer Warning / Expired ========== */
+.timer-warning {
+  color: #ef4444 !important;
+}
+
+@keyframes timer-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+
+.timer-expired {
+  color: #ef4444 !important;
+  animation: timer-blink 0.6s ease-in-out infinite;
+}
+
+/* ========== Autoplay Indicator ========== */
+.autoplay-indicator {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 150;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.2rem 0.8rem;
+  border-radius: 999px;
+  background: var(--slide-accent);
+  color: #fff;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.autoplay-indicator.visible {
+  opacity: 0.8;
+  animation: autoplay-pulse 2s ease-in-out infinite;
+}
+
+@keyframes autoplay-pulse {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 0.5; }
+}
+
+/* ========== QR Code Overlay ========== */
+.qrcode-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 350;
+  background: color-mix(in srgb, var(--slide-bg) 80%, transparent);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  cursor: pointer;
+}
+
+.qrcode-backdrop.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.qrcode-container {
+  text-align: center;
+}
+
+.qrcode-img {
+  border-radius: 8px;
+  background: #fff;
+  padding: 8px;
+}
+
+.qrcode-url {
+  margin: 0.75rem 0 0;
+  font-size: 0.75rem;
+  color: var(--slide-muted);
+  word-break: break-all;
+  max-width: 300px;
+}
+
+/* ========== Start Page Cheatsheet ========== */
+.start-cheatsheet {
+  margin-top: 0.5rem;
+  font-size: 0.82rem;
+  color: var(--slide-text);
+}
+
+.start-cheatsheet summary {
+  cursor: pointer;
+  color: var(--slide-accent);
+  font-size: 0.82rem;
+}
+
+.start-cheatsheet-code {
+  background: var(--slide-code-bg, #f1f5f9);
+  color: var(--slide-text);
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  overflow-x: auto;
+  margin: 0.5rem 0 0;
+}
+
+.start-section a {
+  color: var(--slide-accent);
+  text-decoration: none;
+}
+
+.start-section a:hover {
+  text-decoration: underline;
 }

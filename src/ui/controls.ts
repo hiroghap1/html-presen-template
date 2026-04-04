@@ -13,6 +13,8 @@ import { DrawingOverlay } from './drawing';
 import { Magnifier } from './magnifier';
 import { LaserPointer } from './laser';
 import { SlideNumber } from './slide-number';
+import { Autoplay } from './autoplay';
+import { QRCodeOverlay } from './qrcode';
 
 interface ControlsDeps {
   engine: SlideEngine;
@@ -35,6 +37,8 @@ export function initControls(
   const magnifier = new Magnifier(document.getElementById('slide-viewport')!);
   const laser = new LaserPointer();
   const slideNumber = new SlideNumber();
+  const autoplay = new Autoplay(engine);
+  const qrcode = new QRCodeOverlay();
 
   /** Lock slide navigation when drawing or zooming */
   function syncNavLock() {
@@ -52,6 +56,9 @@ export function initControls(
   // Initial slide number
   slideNumber.update(engine.currentIndex + 1, engine.slideCount);
 
+  // Stop auto-play on manual keyboard/click navigation
+  // (we hook into keydown/click rather than slidechange to avoid stopping on autoplay's own advance)
+
   // --- Helper to create buttons ---
   function btn(text: string, title: string, onClick: () => void): HTMLButtonElement {
     const b = document.createElement('button');
@@ -64,9 +71,12 @@ export function initControls(
 
   // === Main toolbar buttons ===
 
-  // Slide counter
+  // Slide counter (clickable to toggle slide number display)
   const counter = document.createElement('span');
   counter.className = 'ctrl-counter';
+  counter.style.cursor = 'pointer';
+  counter.title = 'スライド番号表示切替 (N)';
+  counter.addEventListener('click', () => slideNumber.toggle());
   const updateCounter = () => {
     counter.textContent = `${engine.currentIndex + 1} / ${engine.slideCount}`;
   };
@@ -141,7 +151,7 @@ export function initControls(
   });
 
   // Timer mode
-  const timerModeLabels = { elapsed: 'Timer', clock: 'Clock', off: 'Timer Off' } as const;
+  const timerModeLabels = { elapsed: 'Timer', clock: 'Clock', countdown: 'Count', off: 'Timer Off' } as const;
   const timerBtn = btn(timerModeLabels[timer.mode], 'タイマーモード切替', () => {
     timerBtn.textContent = timerModeLabels[timer.cycleMode()];
     syncOptVisibility();
@@ -156,6 +166,94 @@ export function initControls(
     timerPosBtn.textContent = posLabels[timer.cyclePosition()];
   });
 
+
+  // Autoplay
+  const autoPlayBtn = btn('▶', '自動再生 (A)', () => {
+    if (autoplay.active) {
+      autoplay.stop();
+      autoSettingsPanel.classList.remove('visible');
+    } else {
+      syncAutoSettingsUI();
+      autoSettingsPanel.classList.add('visible');
+      const rect = autoPlayBtn.getBoundingClientRect();
+      autoSettingsPanel.style.left = `${rect.left}px`;
+      autoSettingsPanel.style.bottom = `${window.innerHeight - rect.top + 8}px`;
+    }
+    updateAutoplayBtns();
+  });
+
+  // Settings popover
+  const autoSettingsPanel = document.createElement('div');
+  autoSettingsPanel.className = 'auto-settings-panel';
+  autoSettingsPanel.innerHTML = `
+    <label>
+      <span>スライド間隔</span>
+      <input type="range" min="3" max="30" step="1" class="auto-slide-range" />
+      <span class="auto-slide-val"></span>
+    </label>
+    <label>
+      <span>フラグメント間隔</span>
+      <input type="range" min="1" max="10" step="0.5" class="auto-frag-range" />
+      <span class="auto-frag-val"></span>
+    </label>
+    <label class="auto-repeat-label">
+      <input type="checkbox" class="auto-repeat-check" />
+      <span>リピート</span>
+    </label>
+    <button type="button" class="auto-start-btn">▶ 再生開始</button>
+  `;
+  document.body.appendChild(autoSettingsPanel);
+
+  const slideRange = autoSettingsPanel.querySelector('.auto-slide-range') as HTMLInputElement;
+  const slideVal = autoSettingsPanel.querySelector('.auto-slide-val') as HTMLElement;
+  const fragRange = autoSettingsPanel.querySelector('.auto-frag-range') as HTMLInputElement;
+  const fragVal = autoSettingsPanel.querySelector('.auto-frag-val') as HTMLElement;
+  const repeatCheck = autoSettingsPanel.querySelector('.auto-repeat-check') as HTMLInputElement;
+
+  function syncAutoSettingsUI() {
+    slideRange.value = String(autoplay.slideInterval);
+    slideVal.textContent = `${autoplay.slideInterval}s`;
+    fragRange.value = String(autoplay.fragmentInterval);
+    fragVal.textContent = `${autoplay.fragmentInterval}s`;
+    repeatCheck.checked = autoplay.repeat;
+  }
+  syncAutoSettingsUI();
+
+  slideRange.addEventListener('input', () => {
+    const v = parseFloat(slideRange.value);
+    autoplay.setSlideInterval(v);
+    slideVal.textContent = `${v}s`;
+  });
+  fragRange.addEventListener('input', () => {
+    const v = parseFloat(fragRange.value);
+    autoplay.setFragmentInterval(v);
+    fragVal.textContent = `${v}s`;
+  });
+  repeatCheck.addEventListener('change', () => {
+    autoplay.setRepeat(repeatCheck.checked);
+  });
+
+  const autoStartBtn = autoSettingsPanel.querySelector('.auto-start-btn') as HTMLButtonElement;
+  autoStartBtn.addEventListener('click', () => {
+    autoSettingsPanel.classList.remove('visible');
+    autoplay.start();
+    updateAutoplayBtns();
+  });
+
+  // Close panel when clicking outside
+  document.addEventListener('mousedown', (e) => {
+    if (!autoSettingsPanel.contains(e.target as Node) &&
+        e.target !== autoPlayBtn) {
+      autoSettingsPanel.classList.remove('visible');
+    }
+  });
+
+  function updateAutoplayBtns() {
+    autoPlayBtn.textContent = autoplay.active ? '■' : '▶';
+    autoPlayBtn.classList.toggle('active', autoplay.active);
+  }
+
+  autoplay.onChange(updateAutoplayBtns);
 
   // --- Group: dividers ---
   function sep(): HTMLElement {
@@ -173,6 +271,7 @@ export function initControls(
 
   container.append(
     counter, timer.inlineElement,
+    autoPlayBtn,
     sep(),
     themeBtn, customThemeBtn, progBtn, transBtn,
     sep(),
@@ -295,6 +394,7 @@ export function initControls(
     // Escape: close overlays in order
     if (e.key === 'Escape') {
       e.preventDefault();
+      if (qrcode.visible) { qrcode.hide(); return; }
       if (laser.active) { laser.deactivate(); return; }
       if (drawing.active) { drawing.deactivate(); syncNavLock(); return; }
       if (magnifier.active) { magnifier.dismiss(); syncNavLock(); return; }
@@ -393,6 +493,24 @@ export function initControls(
         e.preventDefault();
         slideNumber.toggle();
         break;
+      case 'a':
+        e.preventDefault();
+        autoplay.toggle();
+        updateAutoplayBtns();
+        break;
+      case 'r':
+        e.preventDefault();
+        qrcode.toggle();
+        break;
+    }
+  });
+
+  // Stop auto-play on manual navigation keys
+  document.addEventListener('keydown', (e) => {
+    if (!autoplay.active) return;
+    const navKeys = ['ArrowRight', 'ArrowDown', 'ArrowLeft', 'ArrowUp', ' ', 'Home', 'End'];
+    if (navKeys.includes(e.key)) {
+      autoplay.stop();
     }
   });
 }

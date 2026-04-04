@@ -1,7 +1,7 @@
-export type TimerMode = 'elapsed' | 'clock' | 'off';
+export type TimerMode = 'elapsed' | 'clock' | 'countdown' | 'off';
 export type TimerPosition = 'toolbar' | 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
 
-const MODES: TimerMode[] = ['elapsed', 'clock', 'off'];
+const MODES: TimerMode[] = ['elapsed', 'countdown', 'clock', 'off'];
 const POSITIONS: TimerPosition[] = ['toolbar', 'top-left', 'top-right', 'bottom-left', 'bottom-right'];
 
 export class Timer {
@@ -15,6 +15,11 @@ export class Timer {
   private startTime: number;
   private rafId: number | null = null;
 
+  /** Countdown duration in seconds */
+  private countdownDuration: number;
+  /** Timestamp when countdown started */
+  private countdownStart: number;
+
   constructor() {
     this.inlineEl = document.createElement('span');
     this.inlineEl.className = 'ctrl-timer';
@@ -26,6 +31,12 @@ export class Timer {
     this._mode = (localStorage.getItem('timer-mode') as TimerMode) ?? 'off';
     this._position = (localStorage.getItem('timer-position') as TimerPosition) ?? 'toolbar';
     this.startTime = Date.now();
+
+    // Read countdown duration from URL param or default to 300 (5 min)
+    const params = new URLSearchParams(location.search);
+    const timerParam = params.get('timer');
+    this.countdownDuration = timerParam ? parseInt(timerParam, 10) || 300 : 300;
+    this.countdownStart = Date.now();
 
     this.applyPosition();
     if (this._mode !== 'off') this.start();
@@ -53,6 +64,10 @@ export class Timer {
       this.startTime = Date.now();
     }
 
+    if (this._mode === 'countdown') {
+      this.countdownStart = Date.now();
+    }
+
     if (this._mode !== 'off') {
       this.start();
     } else {
@@ -73,6 +88,7 @@ export class Timer {
 
   reset(): void {
     this.startTime = Date.now();
+    this.countdownStart = Date.now();
     this.update();
   }
 
@@ -106,6 +122,14 @@ export class Timer {
 
   private update(): void {
     const text = this.formatText();
+    const isCountdownWarning = this._mode === 'countdown' && this.getCountdownRemaining() < 60;
+    const isCountdownExpired = this._mode === 'countdown' && this.getCountdownRemaining() <= 0;
+
+    // Apply warning/blink classes to both elements
+    for (const el of [this.inlineEl, this.overlayEl]) {
+      el.classList.toggle('timer-warning', isCountdownWarning && !isCountdownExpired);
+      el.classList.toggle('timer-expired', isCountdownExpired);
+    }
 
     // Inline (toolbar) — show only when position is toolbar
     if (this._position === 'toolbar' && this._mode !== 'off') {
@@ -128,6 +152,11 @@ export class Timer {
     }
   }
 
+  private getCountdownRemaining(): number {
+    const elapsed = (Date.now() - this.countdownStart) / 1000;
+    return Math.max(0, this.countdownDuration - elapsed);
+  }
+
   private formatText(): string {
     switch (this._mode) {
       case 'elapsed': {
@@ -142,6 +171,13 @@ export class Timer {
         const h = String(now.getHours()).padStart(2, '0');
         const min = String(now.getMinutes()).padStart(2, '0');
         return `${h}:${min}`;
+      }
+      case 'countdown': {
+        const remaining = this.getCountdownRemaining();
+        const totalSecs = Math.ceil(remaining);
+        const m = Math.floor(totalSecs / 60);
+        const s = totalSecs % 60;
+        return `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
       }
       case 'off':
         return '';

@@ -178,6 +178,40 @@ export class SlideEngine {
     });
   }
 
+  initSwipeNavigation(viewport: HTMLElement): void {
+    let startX = 0;
+    let startY = 0;
+    let tracking = false;
+
+    viewport.addEventListener('touchstart', (e) => {
+      if (this._navigationLocked) return;
+      if (e.touches.length !== 1) return;
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+      tracking = true;
+    }, { passive: true });
+
+    viewport.addEventListener('touchend', (e) => {
+      if (!tracking) return;
+      tracking = false;
+      if (this._navigationLocked) return;
+      if (e.changedTouches.length === 0) return;
+
+      const dx = e.changedTouches[0].clientX - startX;
+      const dy = e.changedTouches[0].clientY - startY;
+      const MIN_DISTANCE = 50;
+
+      // Only trigger if horizontal swipe is dominant
+      if (Math.abs(dx) < MIN_DISTANCE || Math.abs(dx) < Math.abs(dy)) return;
+
+      if (dx < 0) {
+        this.next();
+      } else {
+        this.prev();
+      }
+    }, { passive: true });
+  }
+
   private toggleFullscreen(): void {
     if (!document.fullscreenElement) {
       document.documentElement.requestFullscreen().catch(() => {});

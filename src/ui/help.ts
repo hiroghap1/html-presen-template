@@ -25,6 +25,9 @@ const SHORTCUTS = [
   { key: 'Z', desc: 'ズーム（ドラッグで範囲選択→拡大、クリックで戻る）' },
   { key: 'L', desc: 'レーザーポインター ON/OFF' },
   { key: 'N', desc: 'スライド番号 表示/非表示' },
+  { key: 'A', desc: '自動再生 ON/OFF' },
+  { key: 'R', desc: 'QRコード 表示/非表示' },
+  { key: 'スワイプ左右', desc: '次/前のスライド（モバイル）' },
 ];
 
 export class HelpOverlay {

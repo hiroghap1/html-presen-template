@@ -65,6 +65,16 @@ export function showStartPage(viewport: HTMLElement): Promise<DeckSource> {
               <a href="decks/sample.html" download="sample.html" class="start-dl" title="ダウンロード">DL</a>
               <button type="button" class="start-prompt-btn" data-file="decks/sample.html" title="AIプロンプトをコピー">Prompt</button>
             </li>
+            <li>
+              <a href="?deck=decks/lt-template.md" data-deck="decks/lt-template.md">LT（5分）テンプレート</a>
+              <a href="decks/lt-template.md" download="lt-template.md" class="start-dl" title="ダウンロード">DL</a>
+              <button type="button" class="start-prompt-btn" data-file="decks/lt-template.md" title="AIプロンプトをコピー">Prompt</button>
+            </li>
+            <li>
+              <a href="?deck=decks/self-intro.md" data-deck="decks/self-intro.md">自己紹介テンプレート</a>
+              <a href="decks/self-intro.md" download="self-intro.md" class="start-dl" title="ダウンロード">DL</a>
+              <button type="button" class="start-prompt-btn" data-file="decks/self-intro.md" title="AIプロンプトをコピー">Prompt</button>
+            </li>
           </ul>
         </section>
 
@@ -79,6 +89,42 @@ export function showStartPage(viewport: HTMLElement): Promise<DeckSource> {
             <span class="start-theme-chip" data-theme-preview="nature">Nature</span>
             <span class="start-theme-chip" data-theme-preview="neon">Neon</span>
           </div>
+        </section>
+
+        <section class="start-section">
+          <h2>書き方ガイド</h2>
+          <p class="start-theme-hint">
+            <a href="https://marp.app/" target="_blank" rel="noopener">Marp 公式サイト</a> ／
+            <a href="https://marpit.marp.app/markdown" target="_blank" rel="noopener">Markdown リファレンス</a>
+          </p>
+          <details class="start-cheatsheet">
+            <summary>Marp チートシート</summary>
+            <pre class="start-cheatsheet-code">---
+marp: true
+theme: default
+---
+
+# スライドタイトル
+
+本文テキスト
+
+---
+
+## 2枚目のスライド
+
+- 箇条書き1
+- 箇条書き2
+- **太字** と *斜体*
+
+![画像の説明](image.png)
+
+\`\`\`javascript
+// コードブロック
+const hello = "world";
+\`\`\`
+
+&lt;!-- スピーカーノート：ここに発表メモを書く --&gt;</pre>
+          </details>
         </section>
       </div>
     `;
