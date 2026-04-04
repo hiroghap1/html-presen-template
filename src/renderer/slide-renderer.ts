@@ -1,6 +1,9 @@
 import { SlideEngine } from '../engine/slide-engine';
 import { applyFragmentState } from '../engine/fragment';
 
+export type TransitionType = 'slide' | 'fade' | 'zoom' | 'none';
+export const TRANSITIONS: TransitionType[] = ['slide', 'fade', 'zoom', 'none'];
+
 export class SlideRenderer {
   private engine: SlideEngine;
   private viewport: HTMLElement;
@@ -9,16 +12,17 @@ export class SlideRenderer {
   private direction: 'forward' | 'backward' = 'forward';
   private prevIndex = 0;
   private supportsVT: boolean;
+  private _transition: TransitionType;
 
   constructor(engine: SlideEngine, viewport: HTMLElement) {
     this.engine = engine;
     this.viewport = viewport;
     this.supportsVT = 'startViewTransition' in document;
+    this._transition = (localStorage.getItem('slide-transition') as TransitionType) ?? 'slide';
 
     this.styleEl = document.createElement('style');
     document.head.appendChild(this.styleEl);
 
-    // Dedicated style element for dynamic view-transition-name rules
     this.vtStyleEl = document.createElement('style');
     document.head.appendChild(this.vtStyleEl);
 
@@ -34,6 +38,22 @@ export class SlideRenderer {
     });
   }
 
+  get transition(): TransitionType {
+    return this._transition;
+  }
+
+  setTransition(type: TransitionType): void {
+    this._transition = type;
+    localStorage.setItem('slide-transition', type);
+  }
+
+  cycleTransition(): TransitionType {
+    const idx = TRANSITIONS.indexOf(this._transition);
+    const next = TRANSITIONS[(idx + 1) % TRANSITIONS.length];
+    this.setTransition(next);
+    return next;
+  }
+
   render(): void {
     this.styleEl.textContent = this.engine.deckCss;
     if (this.engine.deckTitle) {
@@ -46,15 +66,10 @@ export class SlideRenderer {
     const slide = this.engine.currentSlide;
     if (!slide) return;
 
-    // Collect image srcs from the current (old) slide before replacing
     const oldImages = this.collectImageSrcs(this.viewport);
-
-    // Parse the new slide to find shared images
     const tempDiv = document.createElement('div');
     tempDiv.innerHTML = slide.html;
     const newImages = this.collectImageSrcs(tempDiv);
-
-    // Find shared image srcs
     const sharedSrcs = oldImages.filter((src) => newImages.includes(src));
 
     if (this.supportsVT && sharedSrcs.length > 0) {
@@ -65,41 +80,52 @@ export class SlideRenderer {
   }
 
   private renderWithViewTransition(html: string, sharedSrcs: string[]): void {
-    // Assign view-transition-name to old images
     this.assignTransitionNames(this.viewport, sharedSrcs);
-
     (document as any).startViewTransition(() => {
       this.swapContent(html);
-      // Assign the same view-transition-name to new matching images
       this.assignTransitionNames(this.viewport, sharedSrcs);
       this.applyFragments();
     });
   }
 
   private renderImmediate(html: string): void {
-    // Clear any leftover transition names
     this.vtStyleEl.textContent = '';
 
     const wrapper = document.createElement('div');
     wrapper.className = 'slide-content';
     wrapper.innerHTML = html;
 
-    const animClass =
-      this.direction === 'forward'
-        ? 'slide-enter-forward'
-        : 'slide-enter-backward';
-    wrapper.classList.add(animClass);
+    const animClass = this.getAnimClass();
+    if (animClass) wrapper.classList.add(animClass);
 
     this.viewport.innerHTML = '';
     this.viewport.appendChild(wrapper);
-
     this.applyFragments();
 
-    wrapper.addEventListener(
-      'animationend',
-      () => wrapper.classList.remove(animClass),
-      { once: true },
-    );
+    if (animClass) {
+      wrapper.addEventListener(
+        'animationend',
+        () => wrapper.classList.remove(animClass),
+        { once: true },
+      );
+    }
+  }
+
+  private getAnimClass(): string | null {
+    switch (this._transition) {
+      case 'slide':
+        return this.direction === 'forward'
+          ? 'trans-slide-forward'
+          : 'trans-slide-backward';
+      case 'fade':
+        return 'trans-fade';
+      case 'zoom':
+        return this.direction === 'forward'
+          ? 'trans-zoom-in'
+          : 'trans-zoom-out';
+      case 'none':
+        return null;
+    }
   }
 
   private swapContent(html: string): void {
@@ -120,19 +146,12 @@ export class SlideRenderer {
     return srcs;
   }
 
-  /**
-   * Assign `view-transition-name` to <img> elements whose src matches
-   * one of the shared srcs. Each unique src gets a stable name so the
-   * browser can pair old/new images for the transition.
-   */
   private assignTransitionNames(
     container: Element | HTMLElement,
     sharedSrcs: string[],
   ): void {
     const imgs = container.querySelectorAll('img');
-    // Clear previous names
     imgs.forEach((img) => img.style.removeProperty('view-transition-name'));
-
     imgs.forEach((img) => {
       const src = img.getAttribute('src');
       if (!src) return;

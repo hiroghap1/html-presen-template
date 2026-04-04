@@ -2,58 +2,38 @@ import { SlideEngine } from '../engine/slide-engine';
 import { ThemeManager } from '../theme/theme-manager';
 import { CameraOverlay } from '../camera/camera-overlay';
 import { SlideGrid } from './slide-grid';
+import type { SlideRenderer } from '../renderer/slide-renderer';
+import { Timer } from './timer';
+import { printDeck } from './print';
+import { HelpOverlay } from './help';
 
 interface ControlsDeps {
   engine: SlideEngine;
   theme: ThemeManager;
   camera: CameraOverlay;
   progressBar: HTMLElement;
+  renderer: SlideRenderer;
 }
 
 export function initControls(
   container: HTMLElement,
-  { engine, theme, camera, progressBar }: ControlsDeps,
+  { engine, theme, camera, progressBar, renderer }: ControlsDeps,
 ): void {
-  // Theme toggle
-  const themeBtn = document.createElement('button');
-  themeBtn.className = 'ctrl-btn';
-  themeBtn.title = 'テーマ切替 (T)';
-  themeBtn.textContent = theme.mode === 'dark' ? 'Light' : 'Dark';
-  themeBtn.addEventListener('click', () => {
-    theme.toggle();
-    themeBtn.textContent = theme.mode === 'dark' ? 'Light' : 'Dark';
-  });
+  const help = new HelpOverlay();
+  const grid = new SlideGrid(engine);
+  const timer = new Timer();
 
-  // Camera toggle
-  const cameraBtn = document.createElement('button');
-  cameraBtn.className = 'ctrl-btn';
-  cameraBtn.title = 'カメラ ON/OFF (C)';
-  cameraBtn.textContent = 'Cam';
-  cameraBtn.addEventListener('click', () => {
-    camera.toggle();
-    cameraBtn.classList.toggle('active', camera.active);
-  });
+  // --- Helper to create buttons ---
+  function btn(text: string, title: string, onClick: () => void): HTMLButtonElement {
+    const b = document.createElement('button');
+    b.className = 'ctrl-btn';
+    b.title = title;
+    b.textContent = text;
+    b.addEventListener('click', onClick);
+    return b;
+  }
 
-  // Camera shape toggle
-  const shapeBtn = document.createElement('button');
-  shapeBtn.className = 'ctrl-btn';
-  shapeBtn.title = 'カメラ形状';
-  shapeBtn.textContent = camera.shape === 'circle' ? '○' : '□';
-  shapeBtn.addEventListener('click', () => {
-    camera.toggleShape();
-    shapeBtn.textContent = camera.shape === 'circle' ? '○' : '□';
-  });
-
-  // Camera size cycle
-  const sizeBtn = document.createElement('button');
-  sizeBtn.className = 'ctrl-btn';
-  sizeBtn.title = 'カメラサイズ';
-  const sizeLabels = { small: 'S', medium: 'M', large: 'L' } as const;
-  sizeBtn.textContent = sizeLabels[camera.size];
-  sizeBtn.addEventListener('click', () => {
-    camera.cycleSize();
-    sizeBtn.textContent = sizeLabels[camera.size];
-  });
+  // === Main toolbar buttons ===
 
   // Slide counter
   const counter = document.createElement('span');
@@ -64,12 +44,22 @@ export function initControls(
   updateCounter();
   engine.on('slidechange', updateCounter);
 
+  // Theme
+  const themeBtn = btn(
+    theme.mode === 'dark' ? 'Light' : 'Dark',
+    'テーマ切替 (T)',
+    () => { theme.toggle(); themeBtn.textContent = theme.mode === 'dark' ? 'Light' : 'Dark'; },
+  );
+
+  // Grid (with Print inside)
+  const gridBtn = document.createElement('button');
+  gridBtn.className = 'ctrl-btn';
+  gridBtn.title = 'スライド一覧 (G)';
+  gridBtn.textContent = 'Grid';
+  gridBtn.addEventListener('click', (e) => { e.stopPropagation(); grid.toggle(); });
+
   // Fullscreen
-  const fsBtn = document.createElement('button');
-  fsBtn.className = 'ctrl-btn';
-  fsBtn.title = 'フルスクリーン (F)';
-  fsBtn.textContent = 'Full';
-  fsBtn.addEventListener('click', () => {
+  const fsBtn = btn('Full', 'フルスクリーン (F)', () => {
     if (!document.fullscreenElement) {
       document.documentElement.requestFullscreen().catch(() => {});
     } else {
@@ -77,118 +67,150 @@ export function initControls(
     }
   });
 
-  // Slide grid
-  const grid = new SlideGrid(engine);
-  const gridBtn = document.createElement('button');
-  gridBtn.className = 'ctrl-btn';
-  gridBtn.title = 'スライド一覧 (G)';
-  gridBtn.textContent = 'Grid';
-  gridBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    grid.toggle();
+  // Help
+  const helpBtn = btn('?', 'ヘルプ (?)', () => help.toggle());
+
+  // Camera
+  const cameraBtn = btn('Cam', 'カメラ ON/OFF (C)', () => {
+    camera.toggle();
+    cameraBtn.classList.toggle('active', camera.active);
   });
 
-  // Progress bar toggle
-  const progBtn = document.createElement('button');
-  progBtn.className = 'ctrl-btn active';
-  progBtn.title = 'プログレスバー (P)';
-  progBtn.textContent = 'Prog';
-  progBtn.addEventListener('click', () => {
+  // Camera shape
+  const shapeBtn = btn(
+    camera.shape === 'circle' ? '○' : '□',
+    'カメラ形状',
+    () => { camera.toggleShape(); shapeBtn.textContent = camera.shape === 'circle' ? '○' : '□'; },
+  );
+
+  // Camera size
+  const sizeLabels = { small: 'S', medium: 'M', large: 'L' } as const;
+  const sizeBtn = btn(sizeLabels[camera.size], 'カメラサイズ', () => {
+    camera.cycleSize();
+    sizeBtn.textContent = sizeLabels[camera.size];
+  });
+
+  // Progress bar
+  const progBtn = btn('Prog', 'プログレスバー (P)', () => {
     progressBar.classList.toggle('hidden');
     progBtn.classList.toggle('active', !progressBar.classList.contains('hidden'));
   });
+  progBtn.classList.add('active');
 
-  container.append(themeBtn, cameraBtn, shapeBtn, sizeBtn, counter, gridBtn, progBtn, fsBtn);
+  // Transition
+  const transBtn = btn(renderer.transition, 'トランジション切替', () => {
+    transBtn.textContent = renderer.cycleTransition();
+  });
 
-  // Toolbar visibility management
-  let hideTimer: ReturnType<typeof setTimeout> | null = null;
+  // Timer mode
+  const timerModeLabels = { elapsed: 'Timer', clock: 'Clock', off: 'Timer Off' } as const;
+  const timerBtn = btn(timerModeLabels[timer.mode], 'タイマーモード切替', () => {
+    timerBtn.textContent = timerModeLabels[timer.cycleMode()];
+  });
+
+  // Timer position
+  const posLabels: Record<string, string> = {
+    'toolbar': 'Pos:Bar', 'top-left': 'Pos:TL', 'top-right': 'Pos:TR',
+    'bottom-left': 'Pos:BL', 'bottom-right': 'Pos:BR',
+  };
+  const timerPosBtn = btn(posLabels[timer.position], 'タイマー表示位置', () => {
+    timerPosBtn.textContent = posLabels[timer.cyclePosition()];
+  });
+
+  // --- Group: dividers ---
+  function sep(): HTMLElement {
+    const s = document.createElement('span');
+    s.className = 'ctrl-sep';
+    return s;
+  }
+
+  // --- Layout ---
+  container.append(
+    counter, timer.inlineElement,
+    sep(),
+    themeBtn, progBtn, transBtn,
+    sep(),
+    cameraBtn, shapeBtn, sizeBtn,
+    sep(),
+    timerBtn, timerPosBtn,
+    sep(),
+    gridBtn, helpBtn, fsBtn,
+  );
+
+  // === Print button inside grid overlay ===
+  grid.addAction('Print / PDF', () => {
+    const viewport = document.getElementById('slide-viewport')!;
+    printDeck(engine, viewport);
+  });
+
+  // === Toolbar visibility ===
+  let hideTimerId: ReturnType<typeof setTimeout> | null = null;
 
   function showToolbar() {
     container.classList.add('visible');
     resetHideTimer();
   }
-
   function hideToolbar() {
     container.classList.remove('visible');
   }
-
   function resetHideTimer() {
-    if (hideTimer) clearTimeout(hideTimer);
-    hideTimer = setTimeout(hideToolbar, 3000);
+    if (hideTimerId) clearTimeout(hideTimerId);
+    hideTimerId = setTimeout(hideToolbar, 3000);
   }
-
   function toggleToolbar() {
     if (container.classList.contains('visible')) {
       hideToolbar();
-      if (hideTimer) clearTimeout(hideTimer);
+      if (hideTimerId) clearTimeout(hideTimerId);
     } else {
       showToolbar();
     }
   }
 
-  // Right-click (contextmenu) to show toolbar
-  document.addEventListener('contextmenu', (e) => {
-    e.preventDefault();
-    toggleToolbar();
-  });
-
-  // Two-finger tap (touchstart with 2 touches)
+  document.addEventListener('contextmenu', (e) => { e.preventDefault(); toggleToolbar(); });
   document.addEventListener('touchstart', (e) => {
-    if (e.touches.length === 2) {
-      e.preventDefault();
-      toggleToolbar();
-    }
+    if (e.touches.length === 2) { e.preventDefault(); toggleToolbar(); }
   });
 
-  // Keyboard shortcuts
+  // === Keyboard shortcuts ===
   document.addEventListener('keydown', (e) => {
-    // G to toggle slide grid
-    if (e.key === 'g' || e.key === 'G') {
-      if (!e.ctrlKey && !e.metaKey) {
-        e.preventDefault();
-        grid.toggle();
-        return;
-      }
-    }
-    // Escape: close grid first, otherwise toggle toolbar
-    if (e.key === 'Escape') {
-      if (grid.visible) {
-        e.preventDefault();
-        grid.hide();
-        return;
-      }
-      if (!e.ctrlKey && !e.metaKey) {
-        e.preventDefault();
-        toggleToolbar();
-      }
+    // ? for help
+    if (e.key === '?') {
+      e.preventDefault();
+      help.toggle();
       return;
     }
-    // M to toggle toolbar
-    if (e.key === 'm' || e.key === 'M') {
-      if (!e.ctrlKey && !e.metaKey) {
+    // G for grid
+    if ((e.key === 'g' || e.key === 'G') && !e.ctrlKey && !e.metaKey) {
+      e.preventDefault();
+      grid.toggle();
+      return;
+    }
+    // Escape: close overlays in order
+    if (e.key === 'Escape') {
+      e.preventDefault();
+      if (help.visible) { help.hide(); return; }
+      if (grid.visible) { grid.hide(); return; }
+      toggleToolbar();
+      return;
+    }
+    if (e.ctrlKey || e.metaKey) return;
+    switch (e.key.toLowerCase()) {
+      case 'm':
         e.preventDefault();
         toggleToolbar();
-      }
-    }
-    if (e.key === 't' || e.key === 'T') {
-      if (!e.ctrlKey && !e.metaKey) {
+        break;
+      case 't':
         theme.toggle();
         themeBtn.textContent = theme.mode === 'dark' ? 'Light' : 'Dark';
-      }
-    }
-    if (e.key === 'c' || e.key === 'C') {
-      if (!e.ctrlKey && !e.metaKey) {
+        break;
+      case 'c':
         camera.toggle();
-        setTimeout(() => {
-          cameraBtn.classList.toggle('active', camera.active);
-        }, 100);
-      }
-    }
-    if (e.key === 'p' || e.key === 'P') {
-      if (!e.ctrlKey && !e.metaKey) {
+        setTimeout(() => cameraBtn.classList.toggle('active', camera.active), 100);
+        break;
+      case 'p':
         progressBar.classList.toggle('hidden');
         progBtn.classList.toggle('active', !progressBar.classList.contains('hidden'));
-      }
+        break;
     }
   });
 }

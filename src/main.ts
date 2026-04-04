@@ -89,7 +89,7 @@ function launchEngine(
     progressBar.style.width = `${pct}%`;
   };
 
-  initControls(controlsContainer, { engine, theme, camera, progressBar });
+  initControls(controlsContainer, { engine, theme, camera, progressBar, renderer });
 
   engine.on('slidechange', updateProgress);
   engine.initKeyboard();

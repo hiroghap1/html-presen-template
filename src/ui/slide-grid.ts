@@ -1,10 +1,17 @@
 import { SlideEngine } from '../engine/slide-engine';
 
+interface GridAction {
+  label: string;
+  handler: () => void;
+}
+
 export class SlideGrid {
   private engine: SlideEngine;
   private overlay: HTMLElement;
   private grid: HTMLElement;
+  private actionBar: HTMLElement;
   private _visible = false;
+  private actions: GridAction[] = [];
 
   constructor(engine: SlideEngine) {
     this.engine = engine;
@@ -12,18 +19,21 @@ export class SlideGrid {
     this.overlay = document.createElement('div');
     this.overlay.className = 'grid-overlay';
 
+    // Action bar at top
+    this.actionBar = document.createElement('div');
+    this.actionBar.className = 'grid-action-bar';
+    this.overlay.appendChild(this.actionBar);
+
     this.grid = document.createElement('div');
     this.grid.className = 'grid-container';
     this.overlay.appendChild(this.grid);
 
-    // Close on overlay background click
     this.overlay.addEventListener('mousedown', (e) => {
       if (e.target === this.overlay) this.hide();
     });
 
     document.body.appendChild(this.overlay);
 
-    // Rebuild active marker when slide changes
     engine.on('slidechange', () => {
       if (this._visible) this.updateActive();
     });
@@ -33,18 +43,18 @@ export class SlideGrid {
     return this._visible;
   }
 
+  addAction(label: string, handler: () => void): void {
+    this.actions.push({ label, handler });
+  }
+
   toggle(): void {
-    if (this._visible) {
-      this.hide();
-    } else {
-      this.show();
-    }
+    this._visible ? this.hide() : this.show();
   }
 
   show(): void {
+    this.buildActionBar();
     this.buildGrid();
     this._visible = true;
-    // Force reflow then add visible class for animation
     this.overlay.offsetHeight;
     this.overlay.classList.add('visible');
   }
@@ -52,6 +62,20 @@ export class SlideGrid {
   hide(): void {
     this.overlay.classList.remove('visible');
     this._visible = false;
+  }
+
+  private buildActionBar(): void {
+    this.actionBar.innerHTML = '';
+    this.actions.forEach(({ label, handler }) => {
+      const btn = document.createElement('button');
+      btn.className = 'grid-action-btn';
+      btn.textContent = label;
+      btn.addEventListener('click', () => {
+        this.hide();
+        handler();
+      });
+      this.actionBar.appendChild(btn);
+    });
   }
 
   private buildGrid(): void {
@@ -64,7 +88,6 @@ export class SlideGrid {
       if (i === this.engine.currentIndex) card.classList.add('active');
       card.type = 'button';
 
-      // Thumbnail: render slide HTML in a scaled-down container
       const thumb = document.createElement('div');
       thumb.className = 'grid-thumb';
 
@@ -73,7 +96,6 @@ export class SlideGrid {
       inner.innerHTML = `<style>${deckCss}</style>${slide.html}`;
       thumb.appendChild(inner);
 
-      // Page number label
       const label = document.createElement('span');
       label.className = 'grid-label';
       label.textContent = String(i + 1);
@@ -89,7 +111,6 @@ export class SlideGrid {
       this.grid.appendChild(card);
     });
 
-    // Calculate thumbnail scale based on actual card width
     requestAnimationFrame(() => {
       const firstThumb = this.grid.querySelector('.grid-thumb') as HTMLElement | null;
       if (firstThumb) {
