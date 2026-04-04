@@ -80,13 +80,23 @@ function launchEngine(
   const engine = new SlideEngine(deck);
   const renderer = new SlideRenderer(engine, viewport);
   const camera = new CameraOverlay(cameraContainer);
+  const progressBar = document.getElementById('progress-bar')!;
 
-  initControls(controlsContainer, { engine, theme, camera });
+  const updateProgress = () => {
+    const pct = engine.slideCount <= 1
+      ? 100
+      : (engine.currentIndex / (engine.slideCount - 1)) * 100;
+    progressBar.style.width = `${pct}%`;
+  };
 
+  initControls(controlsContainer, { engine, theme, camera, progressBar });
+
+  engine.on('slidechange', updateProgress);
   engine.initKeyboard();
   engine.initClickNavigation(viewport);
   engine.initHash();
   renderer.render();
+  updateProgress();
 }
 
 main();

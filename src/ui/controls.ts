@@ -1,16 +1,18 @@
 import { SlideEngine } from '../engine/slide-engine';
 import { ThemeManager } from '../theme/theme-manager';
 import { CameraOverlay } from '../camera/camera-overlay';
+import { SlideGrid } from './slide-grid';
 
 interface ControlsDeps {
   engine: SlideEngine;
   theme: ThemeManager;
   camera: CameraOverlay;
+  progressBar: HTMLElement;
 }
 
 export function initControls(
   container: HTMLElement,
-  { engine, theme, camera }: ControlsDeps,
+  { engine, theme, camera, progressBar }: ControlsDeps,
 ): void {
   // Theme toggle
   const themeBtn = document.createElement('button');
@@ -75,7 +77,28 @@ export function initControls(
     }
   });
 
-  container.append(themeBtn, cameraBtn, shapeBtn, sizeBtn, counter, fsBtn);
+  // Slide grid
+  const grid = new SlideGrid(engine);
+  const gridBtn = document.createElement('button');
+  gridBtn.className = 'ctrl-btn';
+  gridBtn.title = 'スライド一覧 (G)';
+  gridBtn.textContent = 'Grid';
+  gridBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    grid.toggle();
+  });
+
+  // Progress bar toggle
+  const progBtn = document.createElement('button');
+  progBtn.className = 'ctrl-btn active';
+  progBtn.title = 'プログレスバー (P)';
+  progBtn.textContent = 'Prog';
+  progBtn.addEventListener('click', () => {
+    progressBar.classList.toggle('hidden');
+    progBtn.classList.toggle('active', !progressBar.classList.contains('hidden'));
+  });
+
+  container.append(themeBtn, cameraBtn, shapeBtn, sizeBtn, counter, gridBtn, progBtn, fsBtn);
 
   // Toolbar visibility management
   let hideTimer: ReturnType<typeof setTimeout> | null = null;
@@ -119,8 +142,29 @@ export function initControls(
 
   // Keyboard shortcuts
   document.addEventListener('keydown', (e) => {
-    // Escape or M to toggle toolbar
-    if (e.key === 'Escape' || e.key === 'm' || e.key === 'M') {
+    // G to toggle slide grid
+    if (e.key === 'g' || e.key === 'G') {
+      if (!e.ctrlKey && !e.metaKey) {
+        e.preventDefault();
+        grid.toggle();
+        return;
+      }
+    }
+    // Escape: close grid first, otherwise toggle toolbar
+    if (e.key === 'Escape') {
+      if (grid.visible) {
+        e.preventDefault();
+        grid.hide();
+        return;
+      }
+      if (!e.ctrlKey && !e.metaKey) {
+        e.preventDefault();
+        toggleToolbar();
+      }
+      return;
+    }
+    // M to toggle toolbar
+    if (e.key === 'm' || e.key === 'M') {
       if (!e.ctrlKey && !e.metaKey) {
         e.preventDefault();
         toggleToolbar();
@@ -138,6 +182,12 @@ export function initControls(
         setTimeout(() => {
           cameraBtn.classList.toggle('active', camera.active);
         }, 100);
+      }
+    }
+    if (e.key === 'p' || e.key === 'P') {
+      if (!e.ctrlKey && !e.metaKey) {
+        progressBar.classList.toggle('hidden');
+        progBtn.classList.toggle('active', !progressBar.classList.contains('hidden'));
       }
     }
   });
