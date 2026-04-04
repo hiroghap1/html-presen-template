@@ -79,9 +79,10 @@ export function initControls(
   const helpBtn = btn('?', 'ヘルプ (?)', () => help.toggle());
 
   // Camera
-  const cameraBtn = btn('Cam', 'カメラ ON/OFF (C)', () => {
-    camera.toggle();
+  const cameraBtn = btn('Cam', 'カメラ ON/OFF (C)', async () => {
+    await camera.toggle();
     cameraBtn.classList.toggle('active', camera.active);
+    syncOptVisibility();
   });
 
   // Camera shape
@@ -97,6 +98,7 @@ export function initControls(
     camera.cycleSize();
     sizeBtn.textContent = sizeLabels[camera.size];
   });
+
 
   // Progress bar
   const progBtn = btn('Prog', 'プログレスバー (P)', () => {
@@ -114,6 +116,7 @@ export function initControls(
   const timerModeLabels = { elapsed: 'Timer', clock: 'Clock', off: 'Timer Off' } as const;
   const timerBtn = btn(timerModeLabels[timer.mode], 'タイマーモード切替', () => {
     timerBtn.textContent = timerModeLabels[timer.cycleMode()];
+    syncOptVisibility();
   });
 
   // Timer position
@@ -124,6 +127,7 @@ export function initControls(
   const timerPosBtn = btn(posLabels[timer.position], 'タイマー表示位置', () => {
     timerPosBtn.textContent = posLabels[timer.cyclePosition()];
   });
+
 
   // --- Group: dividers ---
   function sep(): HTMLElement {
@@ -136,17 +140,35 @@ export function initControls(
   const presenter = new PresenterView(engine);
 
   // --- Layout ---
+  const camSep = sep();
+  const timerSep = sep();
+
   container.append(
     counter, timer.inlineElement,
     sep(),
     themeBtn, customThemeBtn, progBtn, transBtn,
     sep(),
     cameraBtn, shapeBtn, sizeBtn,
-    sep(),
+    camSep,
     timerBtn, timerPosBtn,
-    sep(),
+    timerSep,
     gridBtn, helpBtn, fsBtn,
   );
+
+  // Sync all conditional visibility
+  function syncOptVisibility() {
+    const camOn = camera.active;
+    shapeBtn.style.display = camOn ? '' : 'none';
+    sizeBtn.style.display = camOn ? '' : 'none';
+    // camSep: divider after camera group, hide when no camera options showing
+    camSep.style.display = camOn ? '' : 'none';
+
+    const timerOn = timer.mode !== 'off';
+    timerPosBtn.style.display = timerOn ? '' : 'none';
+    // timerSep: divider after timer group, hide when no timer options showing
+    timerSep.style.display = timerOn ? '' : 'none';
+  }
+  syncOptVisibility();
 
   // === Grid overlay actions ===
   grid.addAction('Presenter', () => presenter.open());
@@ -216,8 +238,10 @@ export function initControls(
         themeBtn.textContent = theme.mode === 'dark' ? 'Light' : 'Dark';
         break;
       case 'c':
-        camera.toggle();
-        setTimeout(() => cameraBtn.classList.toggle('active', camera.active), 100);
+        camera.toggle().then(() => {
+          cameraBtn.classList.toggle('active', camera.active);
+          syncOptVisibility();
+        });
         break;
       case 'p':
         progressBar.classList.toggle('hidden');

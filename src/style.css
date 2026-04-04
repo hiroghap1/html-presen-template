@@ -35,7 +35,9 @@ html, body {
   align-items: center;
   justify-content: center;
   position: relative;
-  cursor: pointer;
+  cursor: default;
+  padding-bottom: 2.5rem;
+  box-sizing: border-box;
 }
 
 /* Slide content wrapper */
