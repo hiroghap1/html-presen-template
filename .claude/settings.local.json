@@ -9,7 +9,8 @@
       "Bash(npx vite:*)",
       "Bash(mkdir -p public)",
       "Bash(mv decks:*)",
-      "Bash(afplay:*)"
+      "Bash(afplay:*)",
+      "Bash(npm uninstall:*)"
     ]
   }
 }

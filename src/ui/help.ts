@@ -12,6 +12,17 @@ const SHORTCUTS = [
   { key: '右クリック', desc: 'ツールバー表示/非表示' },
   { key: '2本指タップ', desc: 'ツールバー表示/非表示' },
   { key: '?', desc: 'このヘルプを表示' },
+  { key: 'B', desc: 'ブラックアウト（画面を黒く）' },
+  { key: 'W', desc: 'ホワイトアウト（画面を白く）' },
+  { key: 'S', desc: 'スポットライト ON/OFF（スクロールで半径調整）' },
+  { key: 'D', desc: 'ペンツール ON/OFF' },
+  { key: '1-5 / Q', desc: 'ペン色変更 / 太さ変更' },
+  { key: 'D+←→', desc: 'ペン色を前後に切替' },
+  { key: 'D+↑↓', desc: 'ペン太さを変更' },
+  { key: 'Shift+ドラッグ', desc: 'ペン直線モード' },
+  { key: 'Ctrl+Z', desc: 'ペン描画を取り消し' },
+  { key: 'Shift+D', desc: 'ペン描画を全クリア' },
+  { key: 'Z', desc: 'ズーム（ドラッグで範囲選択→拡大、クリックで戻る）' },
 ];
 
 export class HelpOverlay {

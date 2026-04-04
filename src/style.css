@@ -538,6 +538,49 @@ section pre.shiki code {
   text-align: center;
 }
 
+/* ========== Blackout / Whiteout ========== */
+.blackout-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.blackout-overlay.visible {
+  opacity: 1;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+/* ========== Spotlight ========== */
+.spotlight-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 260;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.spotlight-overlay.visible {
+  opacity: 1;
+}
+
+/* ========== Drawing / Pen ========== */
+.drawing-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 310;
+  pointer-events: none;
+}
+
+.drawing-overlay.active {
+  pointer-events: auto;
+  /* cursor is set dynamically by JS to reflect current pen color */
+}
+
 /* ========== Print / PDF ========== */
 @media print {
   /* Hide UI elements */
@@ -546,7 +589,12 @@ section pre.shiki code {
   #progress-bar,
   .grid-overlay,
   .timer-overlay,
-  .help-overlay {
+  .help-overlay,
+  .blackout-overlay,
+  .spotlight-overlay,
+  .drawing-overlay,
+  .magnifier-selection,
+  .magnifier-backdrop {
     display: none !important;
   }
 
@@ -782,4 +830,39 @@ section pre.shiki code {
 
 .share-copied-toast.visible {
   opacity: 1;
+}
+
+/* Magnifier: selection rectangle */
+.magnifier-selection {
+  position: fixed;
+  border: 2px dashed var(--slide-accent, #2563eb);
+  background: color-mix(in srgb, var(--slide-accent, #2563eb) 10%, transparent);
+  z-index: 280;
+  display: none;
+  pointer-events: none;
+}
+
+/* Magnifier cursor: magnifying glass */
+body.magnifier-selecting {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Ccircle cx='11' cy='11' r='8' fill='none' stroke='%23333' stroke-width='2'/%3E%3Cline x1='17' y1='17' x2='25' y2='25' stroke='%23333' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E") 11 11, crosshair !important;
+}
+body.magnifier-selecting * {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Ccircle cx='11' cy='11' r='8' fill='none' stroke='%23333' stroke-width='2'/%3E%3Cline x1='17' y1='17' x2='25' y2='25' stroke='%23333' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E") 11 11, crosshair !important;
+}
+
+/* Magnifier backdrop */
+.magnifier-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  background: color-mix(in srgb, var(--slide-bg) 60%, transparent);
+  backdrop-filter: blur(6px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.magnifier-backdrop.visible {
+  opacity: 1;
+  pointer-events: auto;
 }

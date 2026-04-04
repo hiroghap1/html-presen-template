@@ -120,8 +120,20 @@ export class SlideEngine {
     return n - 1;
   }
 
+  /** When true, keyboard and click navigation are suppressed */
+  private _navigationLocked = false;
+
+  get navigationLocked(): boolean {
+    return this._navigationLocked;
+  }
+
+  set navigationLocked(locked: boolean) {
+    this._navigationLocked = locked;
+  }
+
   initKeyboard(): void {
     document.addEventListener('keydown', (e) => {
+      if (this._navigationLocked) return;
       switch (e.key) {
         case 'ArrowRight':
         case 'ArrowDown':
@@ -155,6 +167,7 @@ export class SlideEngine {
 
   initClickNavigation(viewport: HTMLElement): void {
     viewport.addEventListener('click', (e) => {
+      if (this._navigationLocked) return;
       const rect = viewport.getBoundingClientRect();
       const x = e.clientX - rect.left;
       if (x < rect.width / 3) {

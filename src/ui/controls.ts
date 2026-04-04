@@ -7,6 +7,10 @@ import { Timer } from './timer';
 import { printDeck } from './print';
 import { HelpOverlay } from './help';
 import { PresenterView } from './presenter';
+import { BlackoutOverlay } from './blackout';
+import { SpotlightOverlay } from './spotlight';
+import { DrawingOverlay } from './drawing';
+import { Magnifier } from './magnifier';
 
 interface ControlsDeps {
   engine: SlideEngine;
@@ -23,6 +27,18 @@ export function initControls(
   const help = new HelpOverlay();
   const grid = new SlideGrid(engine);
   const timer = new Timer();
+  const blackout = new BlackoutOverlay();
+  const spotlight = new SpotlightOverlay();
+  const drawing = new DrawingOverlay();
+  const magnifier = new Magnifier(document.getElementById('slide-viewport')!);
+
+  /** Lock slide navigation when drawing or zooming */
+  function syncNavLock() {
+    engine.navigationLocked = drawing.active || magnifier.active;
+  }
+
+  // Sync drawing canvas with slide changes
+  engine.on('slidechange', () => drawing.onSlideChange(engine.currentIndex));
 
   // --- Helper to create buttons ---
   function btn(text: string, title: string, onClick: () => void): HTMLButtonElement {
@@ -220,8 +236,38 @@ export function initControls(
     if (e.touches.length === 2) { e.preventDefault(); toggleToolbar(); }
   });
 
+  // === D key hold state for arrow key combos ===
+  let dKeyHeld = false;
+
+  document.addEventListener('keyup', (e) => {
+    if (e.key === 'd' || e.key === 'D') {
+      dKeyHeld = false;
+    }
+  });
+
   // === Keyboard shortcuts ===
   document.addEventListener('keydown', (e) => {
+    // D held + arrow keys: change pen color/width
+    if (dKeyHeld && drawing.active) {
+      switch (e.key) {
+        case 'ArrowRight':
+          e.preventDefault();
+          drawing.nextColor();
+          return;
+        case 'ArrowLeft':
+          e.preventDefault();
+          drawing.prevColor();
+          return;
+        case 'ArrowUp':
+          e.preventDefault();
+          drawing.nextWidth();
+          return;
+        case 'ArrowDown':
+          e.preventDefault();
+          drawing.prevWidth();
+          return;
+      }
+    }
     // ? for help
     if (e.key === '?') {
       e.preventDefault();
@@ -237,12 +283,51 @@ export function initControls(
     // Escape: close overlays in order
     if (e.key === 'Escape') {
       e.preventDefault();
+      if (drawing.active) { drawing.deactivate(); syncNavLock(); return; }
+      if (magnifier.active) { magnifier.dismiss(); syncNavLock(); return; }
+      if (blackout.active) { blackout.dismiss(); return; }
       if (help.visible) { help.hide(); return; }
       if (grid.visible) { grid.hide(); return; }
       toggleToolbar();
       return;
     }
+
+    // Undo drawing (Ctrl/Cmd+Z)
+    if (drawing.active && e.key === 'z' && (e.ctrlKey || e.metaKey)) {
+      e.preventDefault();
+      drawing.undo();
+      return;
+    }
+
+    // Drawing mode: number keys 1-5 to change color, Q to cycle width
+    if (drawing.active) {
+      if (e.key >= '1' && e.key <= '5') {
+        e.preventDefault();
+        drawing.setColor(parseInt(e.key, 10) - 1);
+        return;
+      }
+      if (e.key === 'q' || e.key === 'Q') {
+        e.preventDefault();
+        drawing.cycleWidth();
+        return;
+      }
+    }
+
+    // Dismiss blackout on any key (except B/W which toggle)
+    if (blackout.active && e.key !== 'b' && e.key !== 'B' && e.key !== 'w' && e.key !== 'W') {
+      blackout.dismiss();
+      return;
+    }
+
     if (e.ctrlKey || e.metaKey) return;
+
+    // Shift+D: clear drawings
+    if (e.key === 'D' && e.shiftKey) {
+      e.preventDefault();
+      drawing.clear();
+      return;
+    }
+
     switch (e.key.toLowerCase()) {
       case 'm':
         e.preventDefault();
@@ -261,6 +346,31 @@ export function initControls(
       case 'p':
         progressBar.classList.toggle('hidden');
         progBtn.classList.toggle('active', !progressBar.classList.contains('hidden'));
+        break;
+      case 'b':
+        e.preventDefault();
+        blackout.toggleBlack();
+        break;
+      case 'w':
+        e.preventDefault();
+        blackout.toggleWhite();
+        break;
+      case 's':
+        e.preventDefault();
+        spotlight.toggle();
+        break;
+      case 'd':
+        e.preventDefault();
+        if (!dKeyHeld) {
+          drawing.toggle();
+          syncNavLock();
+        }
+        dKeyHeld = true;
+        break;
+      case 'z':
+        e.preventDefault();
+        magnifier.toggle();
+        syncNavLock();
         break;
     }
   });
