@@ -6,6 +6,7 @@ import { ThemeManager } from './theme/theme-manager';
 import { CameraOverlay } from './camera/camera-overlay';
 import { initControls } from './ui/controls';
 import { showStartPage, type DeckSource } from './ui/start-page';
+import { AspectRatio } from './ui/aspect-ratio';
 import type { Deck } from './types';
 
 async function main() {
@@ -15,6 +16,9 @@ async function main() {
   const viewport = document.getElementById('slide-viewport')!;
   const cameraContainer = document.getElementById('camera-overlay')!;
   const controlsContainer = document.getElementById('controls')!;
+
+  // Initialize viewport size early (sets meta viewport width + CSS vars + zoom)
+  new AspectRatio(viewport);
 
   // Initialize theme early so start page also gets themed
   const theme = new ThemeManager();

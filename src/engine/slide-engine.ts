@@ -34,6 +34,11 @@ export class SlideEngine {
     return this.deck.css;
   }
 
+  /** スライドの論理幅（サムネ・プレゼンター縮小の基準） */
+  get slideWidthPx(): number {
+    return this.deck.slideWidthPx ?? 960;
+  }
+
   get deckTitle(): string | undefined {
     return this.deck.title;
   }

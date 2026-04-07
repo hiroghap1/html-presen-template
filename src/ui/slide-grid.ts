@@ -93,6 +93,7 @@ export class SlideGrid {
 
       const inner = document.createElement('div');
       inner.className = 'grid-thumb-inner';
+      inner.style.width = `${this.engine.slideWidthPx}px`;
       inner.innerHTML = `<style>${deckCss}</style>${slide.html}`;
       thumb.appendChild(inner);
 
@@ -115,7 +116,7 @@ export class SlideGrid {
       const firstThumb = this.grid.querySelector('.grid-thumb') as HTMLElement | null;
       if (firstThumb) {
         const thumbWidth = firstThumb.clientWidth;
-        const scale = thumbWidth / 960;
+        const scale = thumbWidth / this.engine.slideWidthPx;
         this.grid.querySelectorAll('.grid-thumb-inner').forEach((el) => {
           (el as HTMLElement).style.transform = `scale(${scale})`;
         });

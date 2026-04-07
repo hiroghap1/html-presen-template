@@ -73,6 +73,7 @@ export class PresenterView {
   }
 
   private buildHTML(): string {
+    const w = this.engine.slideWidthPx;
     return `<!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -106,14 +107,14 @@ export class PresenterView {
     position: relative;
   }
   #pv-current {
-    width: 960px;
+    width: ${w}px;
     transform-origin: top left;
   }
-  /* Scope deck CSS: reset section sizing for preview */
+  /* HTML デッキ（直下 section）向けプレビュー調整。Marp は .marpit 配下のためこのルールは当たらない */
   #pv-current > section,
   #pv-next > section {
     position: relative !important;
-    width: 960px !important;
+    width: ${w}px !important;
     height: auto !important;
     min-height: 0 !important;
     padding: 2rem !important;
@@ -136,7 +137,7 @@ export class PresenterView {
     z-index: 1;
   }
   #pv-next {
-    width: 960px;
+    width: ${w}px;
     transform-origin: top left;
   }
   .pv-end-msg {
@@ -181,7 +182,7 @@ export class PresenterView {
       var inner = document.getElementById(innerId);
       var wrap = document.getElementById(wrapperId);
       if (!inner || !wrap) return;
-      var scale = wrap.clientWidth / 960;
+      var scale = wrap.clientWidth / ${w};
       inner.style.transform = 'scale(' + scale + ')';
       // Set the wrapper's effective content height
       var contentH = inner.scrollHeight * scale;

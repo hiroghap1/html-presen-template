@@ -3,12 +3,23 @@
 @import './theme/dark.css';
 
 /* Viewport */
-html, body {
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  width: 100%;
   height: 100%;
   overflow: hidden;
   background: var(--slide-bg);
   color: var(--slide-text);
   transition: background-color 0.3s ease, color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 2.5rem;
+  box-sizing: border-box;
 }
 
 /* Progress bar */
@@ -28,31 +39,52 @@ html, body {
   pointer-events: none;
 }
 
+/* #slide-viewport = スライド領域。max-width + aspect-ratio で制御。
+   zoom をここに適用し、View Transition の座標系に影響しないようにする */
 #slide-viewport {
   width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  max-width: var(--slide-width, 1920px);
+  aspect-ratio: var(--slide-aspect-ratio, 16 / 9);
   position: relative;
   cursor: default;
-  padding-bottom: 2.5rem;
-  box-sizing: border-box;
+  overflow: hidden;
+  zoom: var(--slide-zoom, 1);
 }
 
-/* Slide content wrapper */
+/* Slide content wrapper — slide-viewport と同サイズ */
 .slide-content {
   width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 
 .slide-content > section {
   width: 100%;
-  max-width: 960px;
-  padding: 2rem 3rem;
+  height: 100%;
+  padding: 3rem 5rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+/* Marp: div.marpit + svg を保持し、scoped CSS のセレクタと一致させる */
+.slide-content > .marpit {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.slide-content > .marpit > svg[data-marpit-svg] {
+  width: 100%;
+  height: 100%;
   box-sizing: border-box;
 }
 
@@ -144,10 +176,17 @@ section pre.shiki code {
   animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* When a shared image exists, suppress the default crossfade on the root */
-::view-transition-old(root),
+/* Root: テキスト等はクロスフェードで滑らかに切り替え */
+::view-transition-old(root) {
+  animation: fade-out 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
 ::view-transition-new(root) {
-  animation: none;
+  animation: fade-in 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes fade-out {
+  from { opacity: 1; }
+  to   { opacity: 0; }
 }
 
 /* Camera overlay */
@@ -774,6 +813,17 @@ section pre.shiki code {
     width: 100%;
   }
 
+  .print-page > .marpit {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .print-page > .marpit > svg[data-marpit-svg] {
+    max-width: 100%;
+    height: auto;
+  }
+
   /* Show all fragments */
   .fragment-hidden {
     visibility: visible !important;
@@ -894,15 +944,6 @@ section pre.shiki code {
 
 /* ========== Responsive scaling ========== */
 @media (max-width: 768px) {
-  .slide-content > section {
-    max-width: 100%;
-    padding: 1.5rem 1.5rem;
-    font-size: clamp(0.85rem, 2.5vw, 1rem);
-  }
-
-  #slide-viewport {
-    padding-bottom: 2rem;
-  }
 
   /* Grid thumbnails: fewer columns on small screens */
   .grid-container {
@@ -936,11 +977,6 @@ section pre.shiki code {
 }
 
 @media (max-width: 480px) {
-  .slide-content > section {
-    padding: 1rem 1rem;
-    font-size: clamp(0.78rem, 3vw, 0.92rem);
-  }
-
   .grid-container {
     grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
     gap: 0.4rem;

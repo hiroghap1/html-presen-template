@@ -61,6 +61,18 @@ export class FontSize {
       .slide-content > section h3 {
         font-size: ${(1.75 * this.scale).toFixed(3)}rem !important;
       }
+      .slide-content > .marpit section {
+        font-size: ${size}rem !important;
+      }
+      .slide-content > .marpit section :is(h1, marp-h1) {
+        font-size: ${(2.5 * this.scale).toFixed(3)}rem !important;
+      }
+      .slide-content > .marpit section :is(h2, marp-h2) {
+        font-size: ${(2.0 * this.scale).toFixed(3)}rem !important;
+      }
+      .slide-content > .marpit section :is(h3, marp-h3) {
+        font-size: ${(1.75 * this.scale).toFixed(3)}rem !important;
+      }
     `;
   }
 }

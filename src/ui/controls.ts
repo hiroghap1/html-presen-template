@@ -16,6 +16,7 @@ import { SlideNumber } from './slide-number';
 import { Autoplay } from './autoplay';
 import { QRCodeOverlay } from './qrcode';
 import { FontSize } from './font-size';
+import { AspectRatio } from './aspect-ratio';
 
 interface ControlsDeps {
   engine: SlideEngine;
@@ -41,6 +42,7 @@ export function initControls(
   const autoplay = new Autoplay(engine);
   const qrcode = new QRCodeOverlay();
   const fontSize = new FontSize();
+  const aspectRatio = new AspectRatio(document.getElementById('slide-viewport')!);
 
   /** Lock slide navigation when drawing or zooming */
   function syncNavLock() {
@@ -161,6 +163,16 @@ export function initControls(
   });
   const fontDownBtn = btn('A-', 'フォント縮小 (-)', () => {
     fontSizeBtn.textContent = fontSize.decrease();
+  });
+
+  // Aspect ratio
+  const ratioBtn = btn(aspectRatio.ratioLabel, 'アスペクト比切替', () => {
+    ratioBtn.textContent = aspectRatio.cycleRatio();
+  });
+
+  // Size
+  const slideSizeBtn = btn(aspectRatio.sizeLabel, 'サイズ切替', () => {
+    slideSizeBtn.textContent = aspectRatio.cycleSize();
   });
 
   // Timer mode
@@ -286,7 +298,7 @@ export function initControls(
     counter, timer.inlineElement,
     autoPlayBtn,
     sep(),
-    themeBtn, customThemeBtn, progBtn, transBtn, fontDownBtn, fontSizeBtn, fontUpBtn,
+    themeBtn, customThemeBtn, progBtn, transBtn, fontDownBtn, fontSizeBtn, fontUpBtn, ratioBtn, slideSizeBtn,
     sep(),
     cameraBtn, shapeBtn, sizeBtn,
     camSep,

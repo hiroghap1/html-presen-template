@@ -20,19 +20,43 @@ export function parseMarpText(markdown: string): Deck {
 
   const parser = new DOMParser();
   const doc = parser.parseFromString(html, 'text/html');
-  const sections = doc.querySelectorAll('section');
-
   const slides: Slide[] = [];
-  sections.forEach((section, i) => {
-    autoAssignFragments(section);
-    slides.push({
-      html: section.outerHTML,
-      notes: comments[i]?.join('\n'),
-      fragmentCount: countFragments(section),
-    });
-  });
 
-  return { slides, css, title: extractTitle(markdown) };
+  // Marp の scoped CSS は「div.marpit > svg > foreignObject > section」前提のため、
+  // section 単体ではなく各スライド用の svg を丸ごと包んで保持する。
+  const marpit = doc.querySelector('div.marpit');
+  const marpitSvgs = marpit?.querySelectorAll(':scope > svg[data-marpit-svg]');
+
+  if (marpitSvgs && marpitSvgs.length > 0) {
+    marpitSvgs.forEach((svg, i) => {
+      const section = svg.querySelector('section');
+      if (!section) return;
+      autoAssignFragments(section);
+      slides.push({
+        html: `<div class="marpit">${svg.outerHTML}</div>`,
+        notes: comments[i]?.join('\n'),
+        fragmentCount: countFragments(section),
+      });
+    });
+  }
+
+  if (slides.length === 0) {
+    doc.querySelectorAll('section').forEach((section, i) => {
+      autoAssignFragments(section);
+      slides.push({
+        html: section.outerHTML,
+        notes: comments[i]?.join('\n'),
+        fragmentCount: countFragments(section),
+      });
+    });
+  }
+
+  return {
+    slides,
+    css,
+    title: extractTitle(markdown),
+    slideWidthPx: 1280,
+  };
 }
 
 function extractTitle(md: string): string | undefined {
