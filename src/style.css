@@ -308,13 +308,33 @@ section pre.shiki code {
 .timer-overlay[data-pos="bottom-right"] { bottom: 4rem; right: 1rem; }
 
 /* ========== Start Page ========== */
+body.start-mode {
+  overflow: auto;
+  height: auto;
+  min-height: 100%;
+  display: block;
+  padding-bottom: 0;
+}
+
+body.start-mode #slide-viewport {
+  aspect-ratio: unset;
+  overflow: visible;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+body.start-mode #progress-bar,
+body.start-mode #controls {
+  display: none;
+}
+
 .start-page {
   width: 100%;
   max-width: 640px;
-  padding: 2rem;
+  padding: 2rem 2rem 4rem;
+  margin: 0 auto;
   box-sizing: border-box;
-  overflow-y: auto;
-  max-height: 100vh;
 }
 
 .start-page h1 {

@@ -33,8 +33,10 @@ async function main() {
     // Direct deck load via URL parameter
     await startPresentation(deckPath, viewport, cameraContainer, controlsContainer, theme);
   } else {
-    // Show start page
+    // Show start page (normal web page layout)
+    document.body.classList.add('start-mode');
     const source = await showStartPage(viewport);
+    document.body.classList.remove('start-mode');
     await startFromSource(source, viewport, cameraContainer, controlsContainer, theme);
   }
 }
