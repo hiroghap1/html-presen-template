@@ -49,6 +49,10 @@ export function initControls(
     engine.navigationLocked = drawing.active || magnifier.active;
   }
 
+  // Keep navigation lock in sync when magnifier state changes internally
+  // (e.g. backdrop click dismiss, small drag exit)
+  magnifier.setStateChangeCallback(syncNavLock);
+
   // Sync drawing canvas with slide changes (hide during transition to prevent flash)
   engine.on('slidechange', () => {
     drawing.hideCanvas();

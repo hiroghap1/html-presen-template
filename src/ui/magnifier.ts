@@ -13,12 +13,13 @@ export class Magnifier {
   private _zoomed = false;
   private startX = 0;
   private startY = 0;
+  private onStateChange?: () => void;
 
   // Saved state for reset
   private savedTransform = '';
   private savedTransformOrigin = '';
   private savedTransition = '';
-  private savedZIndex = '';
+  private savedViewportZIndex = '';
 
   constructor(viewport: HTMLElement) {
     this.viewport = viewport;
@@ -37,6 +38,20 @@ export class Magnifier {
     this.onPointerDown = this.onPointerDown.bind(this);
     this.onPointerMove = this.onPointerMove.bind(this);
     this.onPointerUp = this.onPointerUp.bind(this);
+
+    // Capture-phase click handler: suppress clicks on viewport while magnifier is active.
+    // Some browsers fire click even after preventDefault on pointerdown.
+    this.viewport.addEventListener('click', (e) => {
+      if (this._selectMode || this._zoomed) {
+        e.stopPropagation();
+        e.preventDefault();
+      }
+    }, true);
+  }
+
+  /** Register a callback invoked whenever the magnifier's active state changes */
+  setStateChangeCallback(cb: () => void): void {
+    this.onStateChange = cb;
   }
 
   get active(): boolean {
@@ -62,8 +77,8 @@ export class Magnifier {
         content.addEventListener('transitionend', () => {
           content.style.transformOrigin = this.savedTransformOrigin;
           content.style.transition = this.savedTransition;
-          content.style.zIndex = this.savedZIndex;
-          // Restore overflow
+          // Restore viewport z-index and overflow
+          this.viewport.style.zIndex = this.savedViewportZIndex;
           this.viewport.style.overflow = '';
           document.body.style.overflow = '';
         }, { once: true });
@@ -74,6 +89,7 @@ export class Magnifier {
     if (this._selectMode) {
       this.exitSelectMode();
     }
+    this.onStateChange?.();
   }
 
   private enterSelectMode(): void {
@@ -131,7 +147,10 @@ export class Magnifier {
     this.selectionBox.style.display = 'none';
     this.exitSelectMode();
 
-    if (w < 20 || h < 20) return;
+    if (w < 20 || h < 20) {
+      this.onStateChange?.();
+      return;
+    }
 
     const x = Math.min(this.startX, e.clientX);
     const y = Math.min(this.startY, e.clientY);
@@ -163,17 +182,17 @@ export class Magnifier {
     this.savedTransform = content.style.transform;
     this.savedTransformOrigin = content.style.transformOrigin;
     this.savedTransition = content.style.transition;
-    this.savedZIndex = content.style.zIndex;
+    this.savedViewportZIndex = this.viewport.style.zIndex;
 
-    // Allow content to overflow during zoom
+    // Allow content to overflow during zoom and lift viewport above backdrop (z-index 300)
     this.viewport.style.overflow = 'visible';
+    this.viewport.style.zIndex = '305';
     document.body.style.overflow = 'visible';
 
     // Apply zoom
     content.style.transformOrigin = `${selCenterX}px ${selCenterY}px`;
     content.style.transition = 'transform 0.35s ease';
     content.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
-    content.style.zIndex = '305';
 
     this.backdrop.classList.add('visible');
     this._zoomed = true;
