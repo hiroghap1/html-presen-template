@@ -844,6 +844,20 @@ body.start-mode #controls {
     height: auto;
   }
 
+  /* Keep list markers and quote bars adjacent to their content when the slide
+     uses centered layout (e.g. Marp lead class). Without this, `outside`
+     markers drift to the far left of the section box. */
+  .print-page section :is(ul, ol) {
+    display: inline-block;
+    text-align: left;
+    padding-left: 1.5em;
+    list-style-position: outside;
+  }
+  .print-page section blockquote {
+    display: inline-block;
+    text-align: left;
+  }
+
   /* Show all fragments */
   .fragment-hidden {
     visibility: visible !important;

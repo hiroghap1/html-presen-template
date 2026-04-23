@@ -2,15 +2,17 @@ import Marp from '@marp-team/marp-core';
 import type { Deck, Slide } from '../types';
 import { countFragments, autoAssignFragments } from '../engine/fragment';
 import { corsFetch } from './cors-fetch';
+import { rewriteRelativeUrls, rewriteCssUrls } from './resolve-urls';
 
 export async function loadMarpDeck(path: string): Promise<Deck> {
   const res = await corsFetch(path);
   if (!res.ok) throw new Error(`Failed to load deck: ${path} (${res.status})`);
   const markdown = await res.text();
-  return parseMarpText(markdown);
+  const baseUrl = new URL(path, location.href).href;
+  return parseMarpText(markdown, baseUrl);
 }
 
-export function parseMarpText(markdown: string): Deck {
+export function parseMarpText(markdown: string, baseUrl?: string): Deck {
   const marp = new Marp({
     script: false,
     html: true,
@@ -20,6 +22,8 @@ export function parseMarpText(markdown: string): Deck {
 
   const parser = new DOMParser();
   const doc = parser.parseFromString(html, 'text/html');
+  if (baseUrl) rewriteRelativeUrls(doc, baseUrl);
+  const resolvedCss = baseUrl ? rewriteCssUrls(css, baseUrl) : css;
   const slides: Slide[] = [];
 
   // Marp の scoped CSS は「div.marpit > svg > foreignObject > section」前提のため、
@@ -53,7 +57,7 @@ export function parseMarpText(markdown: string): Deck {
 
   return {
     slides,
-    css,
+    css: resolvedCss,
     title: extractTitle(markdown),
     slideWidthPx: 1280,
   };
