@@ -11,7 +11,9 @@
       "Bash(mv decks:*)",
       "Bash(afplay:*)",
       "Bash(npm uninstall:*)",
-      "Bash(npm run:*)"
+      "Bash(npm run:*)",
+      "Bash(curl -sf \"http://localhost:5173/html-presen-template/decks/06/06_1.md\")",
+      "Bash(curl -sf \"http://localhost:5173/html-presen-template/decks/06/06_2.md\")"
     ]
   }
 }
