@@ -64,6 +64,7 @@ export function parseMarpText(markdown: string, baseUrl?: string): Deck {
 }
 
 function extractTitle(md: string): string | undefined {
-  const match = md.match(/^#\s+(.+)$/m);
+  const body = md.replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n?/, '');
+  const match = body.match(/^#\s+(.+)$/m);
   return match?.[1]?.trim();
 }
