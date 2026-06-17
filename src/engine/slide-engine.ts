@@ -171,8 +171,28 @@ export class SlideEngine {
   }
 
   initClickNavigation(viewport: HTMLElement): void {
+    let downX = 0;
+    let downY = 0;
+    const DRAG_THRESHOLD = 6; // px: これ以上動いたらドラッグ（選択）とみなす
+
+    viewport.addEventListener('mousedown', (e) => {
+      downX = e.clientX;
+      downY = e.clientY;
+    });
+
     viewport.addEventListener('click', (e) => {
       if (this._navigationLocked) return;
+
+      // ドラッグ（テキスト選択）の場合はナビゲーションしない
+      const moved = Math.abs(e.clientX - downX) + Math.abs(e.clientY - downY);
+      if (moved > DRAG_THRESHOLD) return;
+
+      // テキストが選択されている場合もナビゲーションしない
+      const selection = window.getSelection();
+      if (selection && !selection.isCollapsed && selection.toString().trim() !== '') {
+        return;
+      }
+
       const rect = viewport.getBoundingClientRect();
       const x = e.clientX - rect.left;
       if (x < rect.width / 3) {
