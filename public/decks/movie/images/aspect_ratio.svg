@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="640" viewBox="0 0 1400 640" font-family="Hiragino Sans, Hiragino Kaku Gothic ProN, Noto Sans JP, sans-serif">
+<rect x="80" y="130" width="640" height="360" rx="14" fill="#2b2b2b" stroke="#4F86C6" stroke-width="8"/>
+<text x="400" y="320" text-anchor="middle" font-size="56" font-weight="bold" fill="#fff">16 : 9</text>
+<text x="400" y="370" text-anchor="middle" font-size="26" fill="#ddd">1920 × 1080</text>
+<text x="400" y="90" text-anchor="middle" font-size="34" font-weight="bold" fill="#333">横動画</text>
+<text x="400" y="560" text-anchor="middle" font-size="24" fill="#555">YouTube・テレビ・PV（後半の課題）</text>
+<rect x="960" y="60" width="270" height="480" rx="14" fill="#2b2b2b" stroke="#E8833A" stroke-width="8"/>
+<text x="1095" y="300" text-anchor="middle" font-size="52" font-weight="bold" fill="#fff">9 : 16</text>
+<text x="1095" y="350" text-anchor="middle" font-size="24" fill="#ddd">1080 × 1920</text>
+<text x="1095" y="40" text-anchor="middle" font-size="34" font-weight="bold" fill="#333">縦動画</text>
+<text x="1095" y="600" text-anchor="middle" font-size="24" fill="#555">TikTok・リール・ショート（前半の課題）</text>
+</svg>

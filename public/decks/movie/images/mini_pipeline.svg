@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="320" viewBox="0 0 1500 320" font-family="Hiragino Sans, Hiragino Kaku Gothic ProN, Noto Sans JP, sans-serif">
+<rect x="20.0" y="40" width="300" height="220" rx="20" fill="#fff" stroke="#4F86C6" stroke-width="6"/>
+<text x="170.0" y="115" text-anchor="middle" font-size="60">📱</text>
+<text x="170.0" y="180" text-anchor="middle" font-size="38" font-weight="bold" fill="#333">撮る</text>
+<text x="170.0" y="225" text-anchor="middle" font-size="22" fill="#666">スマホで10秒</text>
+<line x1="330.0" y1="150" x2="382.6666666666667" y2="150" stroke="#333" stroke-width="5"/>
+<polygon points="380.6666666666667,138 396.6666666666667,150 380.6666666666667,162" fill="#333"/>
+<rect x="406.6666666666667" y="40" width="300" height="220" rx="20" fill="#fff" stroke="#4F86C6" stroke-width="6"/>
+<text x="556.6666666666667" y="115" text-anchor="middle" font-size="60">➡️</text>
+<text x="556.6666666666667" y="180" text-anchor="middle" font-size="38" font-weight="bold" fill="#333">転送</text>
+<text x="556.6666666666667" y="225" text-anchor="middle" font-size="22" fill="#666">PCへ送る</text>
+<line x1="716.6666666666667" y1="150" x2="769.3333333333334" y2="150" stroke="#333" stroke-width="5"/>
+<polygon points="767.3333333333334,138 783.3333333333334,150 767.3333333333334,162" fill="#333"/>
+<rect x="793.3333333333334" y="40" width="300" height="220" rx="20" fill="#fff" stroke="#4F86C6" stroke-width="6"/>
+<text x="943.3333333333334" y="115" text-anchor="middle" font-size="60">🎬</text>
+<text x="943.3333333333334" y="180" text-anchor="middle" font-size="38" font-weight="bold" fill="#333">読み込む</text>
+<text x="943.3333333333334" y="225" text-anchor="middle" font-size="22" fill="#666">Premiereへ</text>
+<line x1="1103.3333333333335" y1="150" x2="1156.0000000000002" y2="150" stroke="#333" stroke-width="5"/>
+<polygon points="1154.0000000000002,138 1170.0000000000002,150 1154.0000000000002,162" fill="#333"/>
+<rect x="1180.0" y="40" width="300" height="220" rx="20" fill="#fff" stroke="#4F86C6" stroke-width="6"/>
+<text x="1330.0" y="115" text-anchor="middle" font-size="60">▶️</text>
+<text x="1330.0" y="180" text-anchor="middle" font-size="38" font-weight="bold" fill="#333">再生</text>
+<text x="1330.0" y="225" text-anchor="middle" font-size="22" fill="#666">タイムラインで</text>
+</svg>

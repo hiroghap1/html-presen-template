@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="560" viewBox="0 0 1700 560" font-family="Hiragino Sans, Hiragino Kaku Gothic ProN, Noto Sans JP, sans-serif">
+<rect x="30" y="30" width="860" height="70" rx="12" fill="#E8833A"/>
+<text x="460" y="77" text-anchor="middle" font-size="30" font-weight="bold" fill="#fff">前半：昭和レトロ横丁 ショート動画（個人）</text>
+<rect x="910" y="30" width="760" height="70" rx="12" fill="#4F86C6"/>
+<text x="1290" y="77" text-anchor="middle" font-size="30" font-weight="bold" fill="#fff">後半：自転車啓発ゲーム PV（チーム）</text>
+<line x1="60" y1="220" x2="1640" y2="220" stroke="#999" stroke-width="6"/>
+<circle cx="80.0" cy="220" r="18" fill="#E8833A" stroke="#fff" stroke-width="4"/>
+<text x="80.0" y="228" text-anchor="middle" font-size="18" font-weight="bold" fill="#fff">①</text>
+<text x="80.0" y="175" text-anchor="middle" font-size="20" fill="#444">9/25</text>
+<text x="80.0" y="290" text-anchor="middle" font-size="21" fill="#222" font-weight="normal">オリエン</text>
+<circle cx="190.0" cy="220" r="18" fill="#E8833A" stroke="#fff" stroke-width="4"/>
+<text x="190.0" y="228" text-anchor="middle" font-size="18" font-weight="bold" fill="#fff">②</text>
+<text x="190.0" y="175" text-anchor="middle" font-size="20" fill="#444">10/2</text>
+<text x="190.0" y="340" text-anchor="middle" font-size="21" fill="#222" font-weight="normal">スマホ撮影</text>
+<circle cx="300.0" cy="220" r="18" fill="#E8833A" stroke="#fff" stroke-width="4"/>
+<text x="300.0" y="228" text-anchor="middle" font-size="18" font-weight="bold" fill="#fff">③</text>
+<text x="300.0" y="175" text-anchor="middle" font-size="20" fill="#444">10/9</text>
+<text x="300.0" y="290" text-anchor="middle" font-size="21" fill="#222" font-weight="normal">カット編集</text>
+<circle cx="410.0" cy="220" r="18" fill="#E8833A" stroke="#fff" stroke-width="4"/>
+<text x="410.0" y="228" text-anchor="middle" font-size="18" font-weight="bold" fill="#fff">④</text>
+<text x="410.0" y="175" text-anchor="middle" font-size="20" fill="#444">10/16</text>
+<text x="410.0" y="340" text-anchor="middle" font-size="21" fill="#222" font-weight="normal">企画・絵コンテ</text>
+<circle cx="520.0" cy="220" r="18" fill="#E8833A" stroke="#fff" stroke-width="4"/>
+<text x="520.0" y="228" text-anchor="middle" font-size="18" font-weight="bold" fill="#fff">⑤</text>
+<text x="520.0" y="175" text-anchor="middle" font-size="20" fill="#444">10/23</text>
+<text x="520.0" y="290" text-anchor="middle" font-size="21" fill="#222" font-weight="normal">文字・音・縦</text>
+<circle cx="630.0" cy="220" r="18" fill="#E8833A" stroke="#fff" stroke-width="4"/>
+<text x="630.0" y="228" text-anchor="middle" font-size="18" font-weight="bold" fill="#fff">⑥</text>
+<text x="630.0" y="175" text-anchor="middle" font-size="20" fill="#444">11/6</text>
+<text x="630.0" y="340" text-anchor="middle" font-size="21" fill="#222" font-weight="normal">現地撮影</text>
+<circle cx="740.0" cy="220" r="18" fill="#E8833A" stroke="#fff" stroke-width="4"/>
+<text x="740.0" y="228" text-anchor="middle" font-size="18" font-weight="bold" fill="#fff">⑦</text>
+<text x="740.0" y="175" text-anchor="middle" font-size="20" fill="#444">11/13</text>
+<text x="740.0" y="290" text-anchor="middle" font-size="21" fill="#222" font-weight="normal">編集</text>
+<circle cx="850.0" cy="220" r="26" fill="#E8833A" stroke="#fff" stroke-width="4"/>
+<text x="850.0" y="228" text-anchor="middle" font-size="22" font-weight="bold" fill="#fff">⑧</text>
+<text x="850.0" y="175" text-anchor="middle" font-size="20" fill="#444">11/20</text>
+<text x="850.0" y="340" text-anchor="middle" font-size="21" fill="#222" font-weight="bold">完成・上映</text>
+<circle cx="960.0" cy="220" r="18" fill="#4F86C6" stroke="#fff" stroke-width="4"/>
+<text x="960.0" y="228" text-anchor="middle" font-size="18" font-weight="bold" fill="#fff">⑨</text>
+<text x="960.0" y="175" text-anchor="middle" font-size="20" fill="#444">11/27</text>
+<text x="960.0" y="290" text-anchor="middle" font-size="21" fill="#222" font-weight="normal">PV企画</text>
+<circle cx="1070.0" cy="220" r="18" fill="#4F86C6" stroke="#fff" stroke-width="4"/>
+<text x="1070.0" y="228" text-anchor="middle" font-size="18" font-weight="bold" fill="#fff">⑩</text>
+<text x="1070.0" y="175" text-anchor="middle" font-size="20" fill="#444">12/4</text>
+<text x="1070.0" y="340" text-anchor="middle" font-size="21" fill="#222" font-weight="normal">台本・素材</text>
+<circle cx="1180.0" cy="220" r="18" fill="#4F86C6" stroke="#fff" stroke-width="4"/>
+<text x="1180.0" y="228" text-anchor="middle" font-size="18" font-weight="bold" fill="#fff">⑪</text>
+<text x="1180.0" y="175" text-anchor="middle" font-size="20" fill="#444">12/11</text>
+<text x="1180.0" y="290" text-anchor="middle" font-size="21" fill="#222" font-weight="normal">収録・準備</text>
+<circle cx="1290.0" cy="220" r="18" fill="#4F86C6" stroke="#fff" stroke-width="4"/>
+<text x="1290.0" y="228" text-anchor="middle" font-size="18" font-weight="bold" fill="#fff">⑫</text>
+<text x="1290.0" y="175" text-anchor="middle" font-size="20" fill="#444">12/18</text>
+<text x="1290.0" y="340" text-anchor="middle" font-size="21" fill="#222" font-weight="normal">粗編集</text>
+<circle cx="1400.0" cy="220" r="18" fill="#4F86C6" stroke="#fff" stroke-width="4"/>
+<text x="1400.0" y="228" text-anchor="middle" font-size="18" font-weight="bold" fill="#fff">⑬</text>
+<text x="1400.0" y="175" text-anchor="middle" font-size="20" fill="#444">1/8</text>
+<text x="1400.0" y="290" text-anchor="middle" font-size="21" fill="#222" font-weight="normal">演出・音</text>
+<circle cx="1510.0" cy="220" r="18" fill="#4F86C6" stroke="#fff" stroke-width="4"/>
+<text x="1510.0" y="228" text-anchor="middle" font-size="18" font-weight="bold" fill="#fff">⑭</text>
+<text x="1510.0" y="175" text-anchor="middle" font-size="20" fill="#444">1/15</text>
+<text x="1510.0" y="340" text-anchor="middle" font-size="21" fill="#222" font-weight="normal">試写・修正</text>
+<circle cx="1620.0" cy="220" r="26" fill="#4F86C6" stroke="#fff" stroke-width="4"/>
+<text x="1620.0" y="228" text-anchor="middle" font-size="22" font-weight="bold" fill="#fff">⑮</text>
+<text x="1620.0" y="175" text-anchor="middle" font-size="20" fill="#444">1/22</text>
+<text x="1620.0" y="290" text-anchor="middle" font-size="21" fill="#222" font-weight="bold">上映・発表</text>
+<rect x="30" y="400" width="1640" height="120" rx="14" fill="#f5f5f5" stroke="#ddd" stroke-width="2"/>
+<text x="60" y="450" font-size="26" font-weight="bold" fill="#E8833A">★ 11/6 現地撮影（フィールドワーク）</text>
+<text x="60" y="495" font-size="24" fill="#444">横丁で実際に撮る。スマホ1台でOK</text>
+<text x="870" y="450" font-size="26" font-weight="bold" fill="#4F86C6">★ 11/20・1/22 上映会</text>
+<text x="870" y="495" font-size="24" fill="#444">作った動画をみんなで観る。企業に納品する</text>
+</svg>
