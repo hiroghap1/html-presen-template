@@ -21,14 +21,17 @@ function isCrossOrigin(url: string): boolean {
 }
 
 export async function corsFetch(url: string): Promise<Response> {
-  // Same-origin or relative paths: always direct
+  // Same-origin or relative paths: always direct.
+  // cache: 'no-cache' — 常にサーバーへ更新確認する（未変更なら 304 で軽い）。
+  // GitHub Pages などは max-age=600 を返すため、これがないと更新後も
+  // 最大 10 分間は古いデッキが表示される。
   if (!isCrossOrigin(url)) {
-    return fetch(url);
+    return fetch(url, { cache: 'no-cache' });
   }
 
   // Cross-origin: try direct first
   try {
-    const res = await fetch(url);
+    const res = await fetch(url, { cache: 'no-cache' });
     return res;
   } catch {
     // Network/CORS error: retry through proxy

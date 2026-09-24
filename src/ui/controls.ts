@@ -332,6 +332,15 @@ export function initControls(
     const viewport = document.getElementById('slide-viewport')!;
     printDeck(engine, viewport);
   });
+  // Service Worker のキャッシュを全削除して再読み込み（デッキ自体は常にサーバーへ
+  // 更新確認しているので通常は不要。念のための手動キャッシュクリア）
+  grid.addAction('Reload', async () => {
+    try {
+      const keys = await caches.keys();
+      await Promise.all(keys.map((k) => caches.delete(k)));
+    } catch { /* Cache API 非対応・拒否時は無視 */ }
+    location.reload();
+  });
   grid.addAction('Share', () => {
     const url = new URL(location.href);
     url.hash = String(engine.currentIndex + 1);

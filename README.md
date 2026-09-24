@@ -178,7 +178,8 @@
 | スタートページ | ファイルドロップ、URL入力、サンプルデッキ（ダウンロード/プロンプトボタン付き） |
 | PDF/印刷エクスポート | Grid一覧画面から Print / PDF 出力 |
 | 共有URL | クリップボードにスライドURLをコピー（現在のページ番号付き） |
-| Service Worker | オフラインサポート（sw.js 登録） |
+| Service Worker | オフラインサポート（sw.js 登録）。デッキ・画像・index.html は network-first で常にサーバーへ更新確認し、オフライン時のみキャッシュを使用 |
+| Reload（キャッシュクリア） | Grid一覧画面の Reload で Service Worker のキャッシュを削除して再読み込み |
 | GitHub Actions デプロイ | CI/CDによる自動デプロイ対応 |
 | レスポンシブデザイン | 各種画面サイズに対応 |
 | 4種類のトランジション | slide（スライド）、fade（フェード）、zoom（ズーム）、none（なし） |

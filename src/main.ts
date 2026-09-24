@@ -114,9 +114,13 @@ function launchEngine(
 
 main();
 
-// Register service worker for offline support
-if ('serviceWorker' in navigator) {
+// Register service worker for offline support (production only).
+// BASE_URL を付けないとサブパス配信（GitHub Pages 等）で 404 になり登録されない。
+// ?v= はビルドごとに変わり、SW とそのキャッシュを確実に更新させる。
+if (import.meta.env.PROD && 'serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js').catch(() => {});
+    navigator.serviceWorker
+      .register(`${import.meta.env.BASE_URL}sw.js?v=${__BUILD_ID__}`)
+      .catch(() => {});
   });
 }

@@ -18,7 +18,13 @@ function isAbsolute(url: string): boolean {
 function resolve(src: string, base: string): string {
   if (isAbsolute(src)) return src;
   try {
-    return new URL(src, base).href;
+    const url = new URL(src, base);
+    // 同一オリジンのアセットにはビルド ID を付与し、配信ごとにキャッシュを無効化する
+    // （画像・動画・CSS は fetch と違いキャッシュモードを指定できないため）。
+    if (url.origin === location.origin) {
+      url.searchParams.set('v', __BUILD_ID__);
+    }
+    return url.href;
   } catch {
     return src;
   }

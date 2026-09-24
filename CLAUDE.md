@@ -115,7 +115,7 @@ function syncNavLock() {
 Conditionally shows/hides toolbar buttons that are only relevant when their parent feature is active (e.g., camera shape/size buttons only visible when camera is on; timer position button only visible when timer is not off).
 
 ### grid.addAction
-The slide grid overlay exposes `addAction(label, callback)` for adding action buttons (Presenter, Print/PDF, Share) that appear in the grid view.
+The slide grid overlay exposes `addAction(label, callback)` for adding action buttons (Presenter, Print/PDF, Reload, Share) that appear in the grid view.
 
 ### Event System
 `SlideEngine` uses a simple event emitter (`on`/`off`/`emit`) with two events:
