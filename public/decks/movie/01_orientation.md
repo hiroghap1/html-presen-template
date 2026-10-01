@@ -711,7 +711,7 @@ PCとスマホを出してください
 
 | 種類 | 例 |
 |---|---|
-| BGM | DOVA-SYNDROME、甘茶の音楽工房、魔王魂、YouTubeオーディオライブラリ |
+| BGM | OpenTracks（旧DOVA-SYNDROME）、甘茶の音楽工房、魔王魂、YouTubeオーディオライブラリ |
 | 効果音 | 効果音ラボ、OtoLogic |
 | フォント | Adobe Fonts（Creative Cloud に含まれる） |
 | 画像・映像 | Adobe Stock 無料コレクション |
