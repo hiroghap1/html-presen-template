@@ -139,6 +139,9 @@ export class SlideEngine {
   initKeyboard(): void {
     document.addEventListener('keydown', (e) => {
       if (this._navigationLocked) return;
+      // 動画のコントロールにフォーカスがあるときは、Space / 矢印を動画に任せる
+      const target = e.target as HTMLElement | null;
+      if (target?.closest('video, audio, input, select, textarea')) return;
       switch (e.key) {
         case 'ArrowRight':
         case 'ArrowDown':
@@ -182,6 +185,10 @@ export class SlideEngine {
 
     viewport.addEventListener('click', (e) => {
       if (this._navigationLocked) return;
+
+      // 動画・音声・リンク・ボタンの操作はナビゲーションしない（スライド内の <video controls> 用）
+      const target = e.target as HTMLElement | null;
+      if (target?.closest('video, audio, a, button, input, select, textarea')) return;
 
       // ドラッグ（テキスト選択）の場合はナビゲーションしない
       const moved = Math.abs(e.clientX - downX) + Math.abs(e.clientY - downY);

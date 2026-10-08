@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="620" viewBox="0 0 1600 620" font-family="Hiragino Sans, Hiragino Kaku Gothic ProN, Noto Sans JP, sans-serif">
+<clipPath id="c0"><rect x="60" y="90" width="440" height="248" rx="10"/></clipPath>
+<rect x="60" y="90" width="440" height="248" rx="10" fill="#f2f2f2" stroke="#333" stroke-width="4"/>
+<rect x="60" y="243.76" width="440" height="94.24" fill="#dfe8d5" clip-path="url(#c0)"/>
+<rect x="90" y="150" width="90" height="95" fill="#d9d9d9" clip-path="url(#c0)"/>
+<rect x="390" y="130" width="80" height="115" fill="#d9d9d9" clip-path="url(#c0)"/>
+<g clip-path="url(#c0)"><circle cx="280.0" cy="223.55999999999997" r="15.400000000000002" fill="#7A7A7A"/>
+<rect x="260.75" y="241.15999999999997" width="38.5" height="40.53500000000001" rx="7.700000000000001" fill="#7A7A7A"/>
+<rect x="262.95" y="281.695" width="13.200000000000001" height="36.464999999999975" rx="3.3000000000000003" fill="#7A7A7A"/>
+<rect x="283.85" y="281.695" width="13.200000000000001" height="36.464999999999975" rx="3.3000000000000003" fill="#7A7A7A"/></g>
+<text x="280.0" y="62" text-anchor="middle" font-size="36" font-weight="bold" fill="#7A7A7A">ロング</text>
+<text x="280.0" y="386" text-anchor="middle" font-size="26" fill="#333">全身＋場所</text>
+<text x="280.0" y="426" text-anchor="middle" font-size="22" fill="#666">伝わること：どこで・どんな雰囲気か</text>
+<clipPath id="c1"><rect x="580" y="90" width="440" height="248" rx="10"/></clipPath>
+<rect x="580" y="90" width="440" height="248" rx="10" fill="#f2f2f2" stroke="#333" stroke-width="4"/>
+<g clip-path="url(#c1)"><circle cx="800.0" cy="183.0" r="35.0" fill="#4F86C6"/>
+<rect x="756.25" y="223.0" width="87.5" height="92.12500000000001" rx="17.5" fill="#4F86C6"/>
+<rect x="761.25" y="315.125" width="30.0" height="82.875" rx="7.5" fill="#4F86C6"/>
+<rect x="808.75" y="315.125" width="30.0" height="82.875" rx="7.5" fill="#4F86C6"/></g>
+<text x="800.0" y="62" text-anchor="middle" font-size="36" font-weight="bold" fill="#4F86C6">ミディアム</text>
+<text x="800.0" y="386" text-anchor="middle" font-size="26" fill="#333">腰から上</text>
+<text x="800.0" y="426" text-anchor="middle" font-size="22" fill="#666">伝わること：何をしているか</text>
+<clipPath id="c2"><rect x="1100" y="90" width="440" height="248" rx="10"/></clipPath>
+<rect x="1100" y="90" width="440" height="248" rx="10" fill="#f2f2f2" stroke="#333" stroke-width="4"/>
+<g clip-path="url(#c2)"><circle cx="1320.0" cy="167.60000000000002" r="89.60000000000001" fill="#E8833A"/>
+<rect x="1208.0" y="270.00000000000006" width="224.0" height="235.84" rx="44.800000000000004" fill="#E8833A"/>
+<rect x="1220.8" y="505.84000000000003" width="76.80000000000001" height="212.15999999999997" rx="19.200000000000003" fill="#E8833A"/>
+<rect x="1342.4" y="505.84000000000003" width="76.80000000000001" height="212.15999999999997" rx="19.200000000000003" fill="#E8833A"/></g>
+<text x="1320.0" y="62" text-anchor="middle" font-size="36" font-weight="bold" fill="#E8833A">アップ</text>
+<text x="1320.0" y="386" text-anchor="middle" font-size="26" fill="#333">顔・手元・商品</text>
+<text x="1320.0" y="426" text-anchor="middle" font-size="22" fill="#666">伝わること：表情・質感・細部</text>
+<text x="800.0" y="580" text-anchor="middle" font-size="28" font-weight="bold" fill="#333">同じ被写体を、必ずこの3サイズで撮る</text>
+</svg>

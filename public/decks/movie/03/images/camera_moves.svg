@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="760" viewBox="0 0 1600 760" font-family="Hiragino Sans, Hiragino Kaku Gothic ProN, Noto Sans JP, sans-serif">
+<defs><marker id="ah" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#E8833A"/></marker></defs>
+<rect x="60" y="60" width="440" height="190" rx="10" fill="#f2f2f2" stroke="#333" stroke-width="4"/>
+<circle cx="280.0" cy="155.0" r="32" fill="#4F86C6"/>
+<rect x="170.0" y="87.0" width="220" height="136" rx="8" fill="none" stroke="#E8833A" stroke-width="6"/>
+<text x="280.0" y="42" text-anchor="middle" font-size="32" font-weight="bold" fill="#333">フィックス</text>
+<text x="280.0" y="288" text-anchor="middle" font-size="24" fill="#333">固定して撮る</text>
+<text x="280.0" y="320" text-anchor="middle" font-size="21" fill="#666">基本。まずこれ</text>
+<rect x="580" y="60" width="440" height="190" rx="10" fill="#f2f2f2" stroke="#333" stroke-width="4"/>
+<circle cx="800.0" cy="155.0" r="32" fill="#4F86C6"/>
+<line x1="750.0" y1="155.0" x2="640.0" y2="155.0" stroke="#E8833A" stroke-width="8" fill="none" marker-end="url(#ah)"/><line x1="850.0" y1="155.0" x2="960.0" y2="155.0" stroke="#E8833A" stroke-width="8" fill="none" marker-end="url(#ah)"/>
+<text x="800.0" y="42" text-anchor="middle" font-size="32" font-weight="bold" fill="#333">パン</text>
+<text x="800.0" y="288" text-anchor="middle" font-size="24" fill="#333">左右に振る</text>
+<text x="800.0" y="320" text-anchor="middle" font-size="21" fill="#666">横丁の並びを見せる</text>
+<rect x="1100" y="60" width="440" height="190" rx="10" fill="#f2f2f2" stroke="#333" stroke-width="4"/>
+<circle cx="1320.0" cy="155.0" r="32" fill="#4F86C6"/>
+<line x1="1320.0" y1="109.0" x2="1320.0" y2="70.0" stroke="#E8833A" stroke-width="8" fill="none" marker-end="url(#ah)"/><line x1="1320.0" y1="201.0" x2="1320.0" y2="240.0" stroke="#E8833A" stroke-width="8" fill="none" marker-end="url(#ah)"/>
+<text x="1320.0" y="42" text-anchor="middle" font-size="32" font-weight="bold" fill="#333">ティルト</text>
+<text x="1320.0" y="288" text-anchor="middle" font-size="24" fill="#333">上下に振る</text>
+<text x="1320.0" y="320" text-anchor="middle" font-size="21" fill="#666">看板→商品、足元→顔</text>
+<rect x="60" y="430" width="440" height="190" rx="10" fill="#f2f2f2" stroke="#333" stroke-width="4"/>
+<circle cx="280.0" cy="525.0" r="32" fill="#4F86C6"/>
+<circle cx="280.0" cy="525.0" r="68" fill="none" stroke="#E8833A" stroke-width="6" stroke-dasharray="12 10"/>
+<line x1="110.0" y1="525.0" x2="190.0" y2="525.0" stroke="#E8833A" stroke-width="8" fill="none" marker-end="url(#ah)"/>
+<text x="280.0" y="412" text-anchor="middle" font-size="32" font-weight="bold" fill="#333">寄り</text>
+<text x="280.0" y="658" text-anchor="middle" font-size="24" fill="#333">歩いて近づく</text>
+<text x="280.0" y="690" text-anchor="middle" font-size="21" fill="#666">商品に注目させる</text>
+<rect x="580" y="430" width="440" height="190" rx="10" fill="#f2f2f2" stroke="#333" stroke-width="4"/>
+<circle cx="800.0" cy="525.0" r="32" fill="#4F86C6"/>
+<line x1="730.0" y1="585.0" x2="930.0" y2="585.0" stroke="#E8833A" stroke-width="8" fill="none" marker-end="url(#ah)"/>
+<line x1="730.0" y1="465.0" x2="930.0" y2="465.0" stroke="#E8833A" stroke-width="8" fill="none" marker-end="url(#ah)"/>
+<text x="800.0" y="412" text-anchor="middle" font-size="32" font-weight="bold" fill="#333">追い</text>
+<text x="800.0" y="658" text-anchor="middle" font-size="24" fill="#333">被写体と一緒に動く</text>
+<text x="800.0" y="690" text-anchor="middle" font-size="21" fill="#666">歩く人の目線</text>
+<rect x="1100" y="430" width="440" height="190" rx="10" fill="#f2f2f2" stroke="#333" stroke-width="4"/>
+<circle cx="1320.0" cy="525.0" r="32" fill="#4F86C6"/>
+<circle cx="1320.0" cy="525.0" r="68" fill="none" stroke="#E8833A" stroke-width="6" stroke-dasharray="12 10"/>
+<line x1="1230.0" y1="525.0" x2="1150.0" y2="525.0" stroke="#E8833A" stroke-width="8" fill="none" marker-end="url(#ah)"/>
+<text x="1320.0" y="412" text-anchor="middle" font-size="32" font-weight="bold" fill="#333">引き</text>
+<text x="1320.0" y="658" text-anchor="middle" font-size="24" fill="#333">歩いて離れる</text>
+<text x="1320.0" y="690" text-anchor="middle" font-size="21" fill="#666">全体を見せて終わる</text>
+</svg>

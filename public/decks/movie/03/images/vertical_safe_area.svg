@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="800" viewBox="0 0 1400 800" font-family="Hiragino Sans, Hiragino Kaku Gothic ProN, Noto Sans JP, sans-serif">
+<rect x="530" y="30" width="340" height="700" rx="28" fill="#2b2b2b" stroke="#333" stroke-width="6"/>
+<rect x="538" y="38" width="324" height="90" fill="#d94b4b" opacity="0.6"/>
+<rect x="538" y="580" width="324" height="142" fill="#d94b4b" opacity="0.6"/>
+<rect x="790" y="280" width="72" height="300" fill="#d94b4b" opacity="0.6"/>
+<rect x="560" y="160" width="210" height="300" fill="#4F86C6" opacity="0.55"/>
+<rect x="560" y="475" width="210" height="90" fill="#E8833A" opacity="0.65"/>
+<text x="660.0" y="300" text-anchor="middle" font-size="26" font-weight="bold" fill="#fff">主役は</text>
+<text x="660.0" y="335" text-anchor="middle" font-size="26" font-weight="bold" fill="#fff">中央〜やや上</text>
+<text x="660.0" y="530" text-anchor="middle" font-size="24" font-weight="bold" fill="#fff">テロップ</text>
+<text x="500" y="90" text-anchor="end" font-size="26" fill="#c0392b">上：アプリのUI・ユーザー名</text>
+<line x1="506" y1="82" x2="538" y2="82" stroke="#999" stroke-width="2"/>
+<text x="500" y="320" text-anchor="end" font-size="26" fill="#2c5d9a">青：ここに主役を置く</text>
+<line x1="506" y1="312" x2="560" y2="312" stroke="#999" stroke-width="2"/>
+<text x="500" y="525" text-anchor="end" font-size="26" fill="#b8621f">橙：文字はここ</text>
+<line x1="506" y1="517" x2="560" y2="517" stroke="#999" stroke-width="2"/>
+<text x="500" y="650" text-anchor="end" font-size="26" fill="#c0392b">下：キャプション・音楽名</text>
+<line x1="506" y1="642" x2="538" y2="642" stroke="#999" stroke-width="2"/>
+<text x="900" y="430" text-anchor="start" font-size="26" fill="#c0392b">右：いいね・コメントの</text>
+<text x="900" y="466" text-anchor="start" font-size="26" fill="#c0392b">アイコンが並ぶ</text>
+<line x1="862" y1="422" x2="894" y2="422" stroke="#999" stroke-width="2"/>
+<text x="700.0" y="788" text-anchor="middle" font-size="26" fill="#555">赤い部分は投稿するとアプリの表示に隠れる。撮るときから避けておく</text>
+</svg>

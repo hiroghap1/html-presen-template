@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="320" viewBox="0 0 1500 320" font-family="Hiragino Sans, Hiragino Kaku Gothic ProN, Noto Sans JP, sans-serif">
+<rect x="20.0" y="40" width="300" height="220" rx="20" fill="#fff" stroke="#E8833A" stroke-width="6"/>
+<text x="170.0" y="115" text-anchor="middle" font-size="60">📱</text>
+<text x="170.0" y="180" text-anchor="middle" font-size="36" font-weight="bold" fill="#333">撮る</text>
+<text x="170.0" y="225" text-anchor="middle" font-size="22" fill="#666">1カット5〜10秒</text>
+<line x1="330.0" y1="150" x2="382.6666666666667" y2="150" stroke="#333" stroke-width="5"/>
+<polygon points="380.6666666666667,138 396.6666666666667,150 380.6666666666667,162" fill="#333"/>
+<rect x="406.6666666666667" y="40" width="300" height="220" rx="20" fill="#fff" stroke="#E8833A" stroke-width="6"/>
+<text x="556.6666666666667" y="115" text-anchor="middle" font-size="60">➡️</text>
+<text x="556.6666666666667" y="180" text-anchor="middle" font-size="36" font-weight="bold" fill="#333">転送</text>
+<text x="556.6666666666667" y="225" text-anchor="middle" font-size="22" fill="#666">その日のうちに</text>
+<line x1="716.6666666666667" y1="150" x2="769.3333333333334" y2="150" stroke="#333" stroke-width="5"/>
+<polygon points="767.3333333333334,138 783.3333333333334,150 767.3333333333334,162" fill="#333"/>
+<rect x="793.3333333333334" y="40" width="300" height="220" rx="20" fill="#fff" stroke="#E8833A" stroke-width="6"/>
+<text x="943.3333333333334" y="115" text-anchor="middle" font-size="60">📁</text>
+<text x="943.3333333333334" y="180" text-anchor="middle" font-size="36" font-weight="bold" fill="#333">整理</text>
+<text x="943.3333333333334" y="225" text-anchor="middle" font-size="22" fill="#666">フォルダ＋名前</text>
+<line x1="1103.3333333333335" y1="150" x2="1156.0000000000002" y2="150" stroke="#333" stroke-width="5"/>
+<polygon points="1154.0000000000002,138 1170.0000000000002,150 1154.0000000000002,162" fill="#333"/>
+<rect x="1180.0" y="40" width="300" height="220" rx="20" fill="#fff" stroke="#E8833A" stroke-width="6"/>
+<text x="1330.0" y="115" text-anchor="middle" font-size="60">☁️</text>
+<text x="1330.0" y="180" text-anchor="middle" font-size="36" font-weight="bold" fill="#333">バックアップ</text>
+<text x="1330.0" y="225" text-anchor="middle" font-size="22" fill="#666">PC＋もう1か所</text>
+</svg>
