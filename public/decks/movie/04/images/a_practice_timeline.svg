@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="560" viewBox="0 0 1400 560" font-family="Hiragino Sans, Hiragino Kaku Gothic ProN, sans-serif">
+<rect width="1400" height="560" fill="#1e1e1e"/>
+<line x1="170" y1="40" x2="170" y2="442" stroke="#9fb34a" stroke-width="2" stroke-dasharray="6 6"/>
+<path d="M161,26 h18 v12 l-9,9 l-9,-9 z" fill="#9fb34a"/>
+<text x="170" y="20" text-anchor="middle" font-size="18" fill="#cfd8a8">0:00</text>
+<line x1="460" y1="40" x2="460" y2="442" stroke="#9fb34a" stroke-width="2" stroke-dasharray="6 6"/>
+<path d="M451,26 h18 v12 l-9,9 l-9,-9 z" fill="#9fb34a"/>
+<text x="460" y="20" text-anchor="middle" font-size="18" fill="#cfd8a8">3:02</text>
+<line x1="750" y1="40" x2="750" y2="442" stroke="#9fb34a" stroke-width="2" stroke-dasharray="6 6"/>
+<path d="M741,26 h18 v12 l-9,9 l-9,-9 z" fill="#9fb34a"/>
+<text x="750" y="20" text-anchor="middle" font-size="18" fill="#cfd8a8">6:05</text>
+<line x1="1040" y1="40" x2="1040" y2="442" stroke="#9fb34a" stroke-width="2" stroke-dasharray="6 6"/>
+<path d="M1031,26 h18 v12 l-9,9 l-9,-9 z" fill="#9fb34a"/>
+<text x="1040" y="20" text-anchor="middle" font-size="18" fill="#cfd8a8">9:07</text>
+<line x1="1330" y1="40" x2="1330" y2="442" stroke="#9fb34a" stroke-width="2" stroke-dasharray="6 6"/>
+<path d="M1321,26 h18 v12 l-9,9 l-9,-9 z" fill="#9fb34a"/>
+<text x="1330" y="20" text-anchor="middle" font-size="18" fill="#cfd8a8">12:09</text>
+<rect x="10" y="70" width="150" height="54" fill="#2d2d2d"/>
+<text x="22" y="94" font-size="20" font-weight="bold" fill="#fff">V3</text>
+<text x="22" y="116" font-size="13" fill="#bbb">ガイド画像（いちばん上）</text>
+<rect x="10" y="132" width="150" height="54" fill="#2d2d2d"/>
+<text x="22" y="156" font-size="20" font-weight="bold" fill="#fff">V2</text>
+<text x="22" y="178" font-size="13" fill="#bbb">テロップ</text>
+<rect x="10" y="194" width="150" height="54" fill="#2d2d2d"/>
+<text x="22" y="218" font-size="20" font-weight="bold" fill="#fff">V1</text>
+<text x="22" y="240" font-size="13" fill="#bbb">写真とカラーマット</text>
+<rect x="10" y="256" width="150" height="54" fill="#2d2d2d"/>
+<text x="22" y="280" font-size="20" font-weight="bold" fill="#fff">A1</text>
+<text x="22" y="302" font-size="13" fill="#bbb">空ける（後編でスマホの音）</text>
+<rect x="10" y="318" width="150" height="54" fill="#2d2d2d"/>
+<text x="22" y="342" font-size="20" font-weight="bold" fill="#fff">A2</text>
+<text x="22" y="364" font-size="13" fill="#bbb">BGM</text>
+<rect x="10" y="380" width="150" height="54" fill="#2d2d2d"/>
+<text x="22" y="404" font-size="20" font-weight="bold" fill="#fff">A3</text>
+<text x="22" y="426" font-size="13" fill="#bbb">効果音</text>
+<rect x="172" y="70" width="1156" height="54" rx="6" fill="#7b4fa0"/>
+<text x="184" y="103" font-size="19" fill="#fff">guide_safe_area_1080x1920.png</text>
+<rect x="172" y="132" width="286" height="54" rx="6" fill="#9c5fc0"/>
+<text x="184" y="165" font-size="19" fill="#fff">京都・二条の／昭和レトロ横丁</text>
+<rect x="462" y="132" width="286" height="54" rx="6" fill="#9c5fc0"/>
+<text x="474" y="165" font-size="19" fill="#fff">昭和の街並みが／そのまま</text>
+<rect x="172" y="194" width="286" height="54" rx="6" fill="#5b5fc7"/>
+<text x="184" y="227" font-size="19" fill="#fff">入口の通路</text>
+<rect x="462" y="194" width="286" height="54" rx="6" fill="#5b5fc7"/>
+<text x="474" y="227" font-size="19" fill="#fff">ホーロー看板</text>
+<rect x="752" y="194" width="286" height="54" rx="6" fill="#5b5fc7"/>
+<text x="764" y="227" font-size="19" fill="#fff">駄菓子の器</text>
+<rect x="1042" y="194" width="286" height="54" rx="6" fill="#8a8a8a"/>
+<text x="1054" y="227" font-size="19" fill="#fff">穴：ラムネの泡のアップ</text>
+<rect x="172" y="318" width="1156" height="54" rx="6" fill="#3f7a3a"/>
+<text x="184" y="351" font-size="19" fill="#fff">419_BPM78.wav（-6〜-12dB、終わりをフェード）</text>
+<rect x="1270" y="318" width="58" height="54" fill="#d9c34a" opacity="0.8"/>
+<rect x="190" y="380" width="66" height="54" rx="6" fill="#2f8a8a"/>
+<text x="202" y="413" font-size="19" fill="#fff">ポン</text>
+<text x="700" y="482" text-anchor="middle" font-size="20" fill="#ddd">縦線はマーカー（小節の頭で M）。4小節で約12秒</text>
+</svg>
