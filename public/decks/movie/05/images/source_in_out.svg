@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="560" viewBox="0 0 1400 560" font-family="Hiragino Sans, Hiragino Kaku Gothic ProN, Noto Sans JP, sans-serif">
+<rect width="1400" height="560" fill="#1e1e1e"/>
+<text x="120" y="34" font-size="24" fill="#fff" font-weight="bold">ソースモニター：駄菓子の棚_パン（10秒）</text>
+<rect x="120.0" y="80" width="348.0" height="70" fill="#4a6b8a"/>
+<text x="294.0" y="124" text-anchor="middle" font-size="24" fill="#fff">止め</text>
+<rect x="468.0" y="80" width="243.6" height="70" fill="#8a5a3a"/>
+<text x="589.8" y="124" text-anchor="middle" font-size="24" fill="#fff">動き（パン）</text>
+<rect x="711.6" y="80" width="568.4" height="70" fill="#4a6b8a"/>
+<text x="995.8" y="124" text-anchor="middle" font-size="24" fill="#fff">止め</text>
+<rect x="410.0" y="160" width="359.6" height="16" fill="#E8833A"/>
+<line x1="410.0" y1="70" x2="410.0" y2="182" stroke="#ffd166" stroke-width="4"/>
+<rect x="388.0" y="190" width="44" height="40" rx="6" fill="#fff"/>
+<text x="410.0" y="220" text-anchor="middle" font-size="26" font-weight="bold" fill="#222">I</text>
+<line x1="769.6" y1="70" x2="769.6" y2="182" stroke="#ffd166" stroke-width="4"/>
+<rect x="747.6" y="190" width="44" height="40" rx="6" fill="#fff"/>
+<text x="769.6" y="220" text-anchor="middle" font-size="26" font-weight="bold" fill="#222">O</text>
+<text x="120.0" y="70" text-anchor="middle" font-size="14" fill="#888">0秒</text>
+<text x="236.0" y="70" text-anchor="middle" font-size="14" fill="#888">1秒</text>
+<text x="352.0" y="70" text-anchor="middle" font-size="14" fill="#888">2秒</text>
+<text x="468.0" y="70" text-anchor="middle" font-size="14" fill="#888">3秒</text>
+<text x="584.0" y="70" text-anchor="middle" font-size="14" fill="#888">4秒</text>
+<text x="700.0" y="70" text-anchor="middle" font-size="14" fill="#888">5秒</text>
+<text x="816.0" y="70" text-anchor="middle" font-size="14" fill="#888">6秒</text>
+<text x="932.0" y="70" text-anchor="middle" font-size="14" fill="#888">7秒</text>
+<text x="1048.0" y="70" text-anchor="middle" font-size="14" fill="#888">8秒</text>
+<text x="1164.0" y="70" text-anchor="middle" font-size="14" fill="#888">9秒</text>
+<text x="1280.0" y="70" text-anchor="middle" font-size="14" fill="#888">10秒</text>
+<text x="380.0" y="262" text-anchor="end" font-size="19" fill="#ffd166">止めを0.5秒残してイン</text>
+<text x="799.6" y="262" font-size="19" fill="#ffd166">止めを0.5秒残してアウト</text>
+<path d="M589.8,240 L589.8,350" stroke="#E8833A" stroke-width="6"/>
+<polygon points="575.8,346 603.8,346 589.8,368" fill="#E8833A"/>
+<text x="120" y="400" font-size="22" fill="#fff" font-weight="bold">タイムライン</text>
+<rect x="20" y="420" width="90" height="56" fill="#2d2d2d"/><text x="40" y="456" font-size="22" font-weight="bold" fill="#fff">V1</text>
+<line x1="411.2" y1="410" x2="411.2" y2="486" stroke="#9fb34a" stroke-width="2" stroke-dasharray="6 6"/>
+<line x1="768.4" y1="410" x2="768.4" y2="486" stroke="#9fb34a" stroke-width="2" stroke-dasharray="6 6"/>
+<line x1="1125.7" y1="410" x2="1125.7" y2="486" stroke="#9fb34a" stroke-width="2" stroke-dasharray="6 6"/>
+<rect x="130" y="420" width="279.2" height="56" rx="6" fill="#5b5fc7"/><text x="261.2" y="455" font-size="19" fill="#fff" text-anchor="end">看板_アップ</text>
+<rect x="413.2" y="420" width="353.3" height="56" rx="6" fill="#5b5fc7" stroke="#E8833A" stroke-width="4"/><text x="425.2" y="455" font-size="19" fill="#fff">駄菓子の棚_パン</text>
+<text x="589.8" y="510" text-anchor="middle" font-size="19" fill="#ddd">インからアウトまでの約3秒だけが置かれる（1小節）</text>
+<text x="700" y="545" text-anchor="middle" font-size="18" fill="#999">スマホの音が要らないときは、ソースモニターの下の「ビデオのみドラッグ」（フィルムのアイコン）からドラッグ</text>
+</svg>

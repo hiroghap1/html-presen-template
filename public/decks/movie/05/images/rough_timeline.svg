@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="600" viewBox="0 0 1400 600" font-family="Hiragino Sans, Hiragino Kaku Gothic ProN, Noto Sans JP, sans-serif">
+<rect width="1400" height="600" fill="#1e1e1e"/>
+<rect x="175.0" y="18" width="122.7" height="34" rx="6" fill="#3a3a3a"/>
+<text x="236.3" y="42" text-anchor="middle" font-size="19" fill="#ffd166">つかみ</text>
+<rect x="303.7" y="18" width="251.3" height="34" rx="6" fill="#3a3a3a"/>
+<text x="429.3" y="42" text-anchor="middle" font-size="19" fill="#ffd166">魅力①</text>
+<rect x="561.0" y="18" width="251.3" height="34" rx="6" fill="#3a3a3a"/>
+<text x="686.7" y="42" text-anchor="middle" font-size="19" fill="#ffd166">魅力②</text>
+<rect x="818.3" y="18" width="251.3" height="34" rx="6" fill="#3a3a3a"/>
+<text x="944.0" y="42" text-anchor="middle" font-size="19" fill="#ffd166">魅力③</text>
+<rect x="1075.7" y="18" width="251.3" height="34" rx="6" fill="#3a3a3a"/>
+<text x="1201.3" y="42" text-anchor="middle" font-size="19" fill="#ffd166">締め</text>
+<line x1="300.7" y1="64" x2="300.7" y2="472" stroke="#9fb34a" stroke-width="2" stroke-dasharray="6 6"/>
+<path d="M291.7,60 h18 v12 l-9,9 l-9,-9 z" fill="#9fb34a"/>
+<line x1="429.3" y1="64" x2="429.3" y2="472" stroke="#9fb34a" stroke-width="2" stroke-dasharray="6 6"/>
+<path d="M420.3,60 h18 v12 l-9,9 l-9,-9 z" fill="#9fb34a"/>
+<line x1="558.0" y1="64" x2="558.0" y2="472" stroke="#9fb34a" stroke-width="2" stroke-dasharray="6 6"/>
+<path d="M549.0,60 h18 v12 l-9,9 l-9,-9 z" fill="#9fb34a"/>
+<line x1="686.7" y1="64" x2="686.7" y2="472" stroke="#9fb34a" stroke-width="2" stroke-dasharray="6 6"/>
+<path d="M677.7,60 h18 v12 l-9,9 l-9,-9 z" fill="#9fb34a"/>
+<line x1="815.3" y1="64" x2="815.3" y2="472" stroke="#9fb34a" stroke-width="2" stroke-dasharray="6 6"/>
+<path d="M806.3,60 h18 v12 l-9,9 l-9,-9 z" fill="#9fb34a"/>
+<line x1="944.0" y1="64" x2="944.0" y2="472" stroke="#9fb34a" stroke-width="2" stroke-dasharray="6 6"/>
+<path d="M935.0,60 h18 v12 l-9,9 l-9,-9 z" fill="#9fb34a"/>
+<line x1="1072.7" y1="64" x2="1072.7" y2="472" stroke="#9fb34a" stroke-width="2" stroke-dasharray="6 6"/>
+<path d="M1063.7,60 h18 v12 l-9,9 l-9,-9 z" fill="#9fb34a"/>
+<line x1="1201.3" y1="64" x2="1201.3" y2="472" stroke="#9fb34a" stroke-width="2" stroke-dasharray="6 6"/>
+<path d="M1192.3,60 h18 v12 l-9,9 l-9,-9 z" fill="#9fb34a"/>
+<line x1="1330.0" y1="64" x2="1330.0" y2="472" stroke="#9fb34a" stroke-width="2" stroke-dasharray="6 6"/>
+<path d="M1321.0,60 h18 v12 l-9,9 l-9,-9 z" fill="#9fb34a"/>
+<text x="236.3" y="80" text-anchor="middle" font-size="15" fill="#cfd8a8">1</text>
+<text x="365.0" y="80" text-anchor="middle" font-size="15" fill="#cfd8a8">2</text>
+<text x="493.7" y="80" text-anchor="middle" font-size="15" fill="#cfd8a8">3</text>
+<text x="622.3" y="80" text-anchor="middle" font-size="15" fill="#cfd8a8">4</text>
+<text x="751.0" y="80" text-anchor="middle" font-size="15" fill="#cfd8a8">5</text>
+<text x="879.7" y="80" text-anchor="middle" font-size="15" fill="#cfd8a8">6</text>
+<text x="1008.3" y="80" text-anchor="middle" font-size="15" fill="#cfd8a8">7</text>
+<text x="1137.0" y="80" text-anchor="middle" font-size="15" fill="#cfd8a8">8</text>
+<text x="1265.7" y="80" text-anchor="middle" font-size="15" fill="#cfd8a8">9</text>
+<rect x="10" y="96" width="150" height="60" fill="#2d2d2d"/>
+<text x="22" y="122" font-size="20" font-weight="bold" fill="#fff">V3</text>
+<text x="22" y="145" font-size="13" fill="#bbb">ガイド画像</text>
+<rect x="10" y="168" width="150" height="60" fill="#2d2d2d"/>
+<text x="22" y="194" font-size="20" font-weight="bold" fill="#fff">V2</text>
+<text x="22" y="217" font-size="13" fill="#bbb">空ける（テロップは次回）</text>
+<rect x="10" y="240" width="150" height="60" fill="#2d2d2d"/>
+<text x="22" y="266" font-size="20" font-weight="bold" fill="#fff">V1</text>
+<text x="22" y="289" font-size="13" fill="#bbb">構成メモのカット</text>
+<rect x="10" y="312" width="150" height="60" fill="#2d2d2d"/>
+<text x="22" y="338" font-size="20" font-weight="bold" fill="#fff">A1</text>
+<text x="22" y="361" font-size="13" fill="#bbb">使うスマホの音だけ</text>
+<rect x="10" y="384" width="150" height="60" fill="#2d2d2d"/>
+<text x="22" y="410" font-size="20" font-weight="bold" fill="#fff">A2</text>
+<text x="22" y="433" font-size="13" fill="#bbb">BGM</text>
+<rect x="174" y="96" width="1154" height="60" rx="6" fill="#7b4fa0"/>
+<text x="186" y="133" font-size="19" fill="#fff">guide_safe_area_1080x1920.png（書き出す前に目のアイコンをオフ）</text>
+<rect x="174.0" y="240" width="124.7" height="60" rx="6" fill="#5b5fc7"/>
+<text x="182.0" y="277" font-size="16" fill="#fff">看板_アップ</text>
+<rect x="302.7" y="240" width="124.7" height="60" rx="6" fill="#5b5fc7"/>
+<text x="310.7" y="277" font-size="16" fill="#fff">入口_ロング</text>
+<rect x="431.3" y="240" width="124.7" height="60" rx="6" fill="#5b5fc7"/>
+<text x="439.3" y="277" font-size="16" fill="#fff">駄菓子の棚</text>
+<rect x="560.0" y="240" width="124.7" height="60" rx="6" fill="#5b5fc7"/>
+<text x="568.0" y="277" font-size="16" fill="#fff">ラムネ_手元</text>
+<rect x="688.7" y="240" width="124.7" height="60" rx="6" fill="#5b5fc7"/>
+<text x="696.7" y="277" font-size="16" fill="#fff">ラムネ_泡_60</text>
+<rect x="817.3" y="240" width="124.7" height="60" rx="6" fill="#8a8a8a"/>
+<text x="825.3" y="277" font-size="16" fill="#fff">穴：くじ引き</text>
+<rect x="946.0" y="240" width="124.7" height="60" rx="6" fill="#5b5fc7"/>
+<text x="954.0" y="277" font-size="16" fill="#fff">店内_ミディ</text>
+<rect x="1074.7" y="240" width="124.7" height="60" rx="6" fill="#5b5fc7"/>
+<text x="1082.7" y="277" font-size="16" fill="#fff">通路_ロング</text>
+<rect x="1203.3" y="240" width="124.7" height="60" rx="6" fill="#5b5fc7"/>
+<text x="1211.3" y="277" font-size="16" fill="#fff">入口_引き</text>
+<rect x="560.0" y="312" width="124.7" height="60" rx="6" fill="#2f8a8a"/>
+<text x="568.0" y="349" font-size="16" fill="#fff">栓の音</text>
+<rect x="946.0" y="312" width="124.7" height="60" rx="6" fill="#2f8a8a"/>
+<text x="954.0" y="349" font-size="16" fill="#fff">ざわめき</text>
+<rect x="174" y="384" width="1154" height="60" rx="6" fill="#3f7a3a"/>
+<text x="186" y="421" font-size="19" fill="#fff">419_BPM78.mp3（頭の無音0.6秒を切ってから置く）</text>
+<rect x="1268" y="384" width="60" height="60" fill="#d9c34a" opacity="0.85"/>
+<text x="1298" y="468" text-anchor="middle" font-size="15" fill="#d9c34a">フェード</text>
+<text x="700.0" y="550" text-anchor="middle" font-size="21" fill="#ddd">緑の縦線はマーカー（小節の頭で M を押して9つ）。9小節で約28秒、1小節に1カット</text>
+<text x="700.0" y="582" text-anchor="middle" font-size="18" fill="#999">灰色は撮れなかったカットの穴（カラーマット）</text>
+</svg>

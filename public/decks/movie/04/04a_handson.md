@@ -456,9 +456,59 @@ A ズームパンチ／B ステッカー／C 帯／D フラッシュと円形ワ
 | 3段の分割・グリッド | 位置とスケールで並べ、モーションの中のクロップで切る |
 | 動きの緩急 | キーフレームを右クリックしてイーズイン・イーズアウト |
 
-リンクつきの一覧は、Classroom の「横丁見本の再現ハンズオン」に載せてある
+リンクは次の2枚にまとめてある（PDFからそのまま開ける）
 
 <!-- 26.0でエフェクトとトランジションが組み替えられたので、2025年以前の記事の名前は見つからないことがある、と一言 -->
+
+---
+
+<style scoped>
+table { font-size: 16px; }
+td:first-child { white-space: nowrap; }
+p { font-size: 18px; }
+</style>
+
+# 見本の動きを調べるページ
+
+| 見本の動き | 開くページ（PDFからクリックで開ける） |
+|---|---|
+| 1文字ずつ跳ねるコピー（カット9） | [ビデオSALON：Film Impactで魅せるPremiere](https://videosalon.jp/report/filmimpact_premiere/)、[Curioscene：AEのアニメーター](https://www.curioscene.com/ae-title-animation-using-animate-tools/)（AE） |
+| 数字が 0→2,000 と増える（カット3） | [ぺん太の動画編集ブログ：AEで数字をカウントアップ](https://penta-studio.site/ae-countup/)（AE） |
+| 水玉・斜めストライプの切り替え（カット2・3・7） | [カンタン動画入門：グラデーションワイプ](https://douga-tech.co.jp/blog/video-editing-software-apps/gradient-wipe-effect-premiere)、[t-y-kona：ブラシで塗るようなトランジション](https://t-y-kona.com/brush_transition/) |
+| 3段の分割・グリッド（カット4・6） | [oiuy：画面を分割する方法](https://oiuy.net/archives/29366)、[Carp-Tips：ネストで画面分割](https://www.carp-tips.carps.co.jp/premiere_tips/beginner-nest-02/) |
+| 駄菓子が飛び込む・ゆれる（カット5・9） | [クリエイターのたまご：画像・テキストを動かす](https://belier-imagecreation.com/premierepro_howto-animate/)、[Adobe Learn：テロップアニメーション5選](https://www.adobe.com/jp/learn/premiere-pro/web/jp-text-animation-effects) |
+| 円のバースト・3色の輪（カット1・9・10） | [yukiblog：図形の入れ方と編集](https://yukiblog.org/premiere-pro-shapes)、[公式：プロパティパネルでアニメーション](https://helpx.adobe.com/jp/premiere/desktop/add-text-images/insert-images-and-graphics/animate-layers-using-properties-panel.html) |
+| ロゴが落ちて弾む（カット10） | [50歳までにフリーランス：バウンドするアイコン](https://goldenchobi.com/pre19_effect1_bound/) |
+| 文字の背景をステッカー風に | [クリエイターのたまご：テキストに背景をつける](https://belier-imagecreation.com/premierepro_add-background_to-texts/) |
+| 動きの緩急（イーズ・グラフ） | [公式：キーフレーム補間方法](https://helpx.adobe.com/jp/premiere/desktop/add-video-effects/control-effects-and-transitions-using-keyframes/change-keyframe-interpolation-method.html)、[公式：キーフレームグラフ](https://helpx.adobe.com/jp/premiere/desktop/add-video-effects/control-effects-and-transitions-using-keyframes/edit-keyframes-graphs.html)、[Curioscene：イージングとベジェ](https://curioscene.com/articles/easing-and-bezier-using-premiere-pro) |
+| 粒子・ビネット・網点 | [公式：Lumetriでビネット](https://helpx.adobe.com/jp/premiere/desktop/add-video-effects/commonly-used-effects/create-vignettes-using-lumetri-color.html)、[ふみのくらし：描画モード](https://fummynokurashi.com/brendingmode-premirepro/)、[creation-is-fun：Illustratorで網点](https://creation-is-fun.com/adobe-illustrator-cc/dot/) |
+
+（AE）は After Effects の記事。数字のカウントアップは、今の Premiere だけでは作れない
+
+---
+
+<style scoped>
+table { font-size: 17px; }
+td:first-child { white-space: nowrap; }
+li { font-size: 19px; }
+</style>
+
+# 操作を一覧で引けるページ
+
+| ページ | 使いどころ |
+|---|---|
+| [Adobe Learn：ショートカットキー一覧](https://www.adobe.com/jp/learn/premiere-pro/web/jp-shortcut-keys-premiere) | よく使うものに絞った表。まずはこれ |
+| [公式：キーボードショートカット](https://helpx.adobe.com/jp/premiere/desktop/get-started/keyboard-shortcuts/default-keyboard-shortcuts.html) | 最初から割り当てられているものの全部 |
+| [公式：Premiere デスクトップヘルプ](https://helpx.adobe.com/jp/premiere/desktop.html) | 機能別の目次 |
+| [Adobe Learn：チュートリアル一覧](https://www.adobe.com/jp/learn/premiere-pro) | URLが「jp-」で始まる記事は、26.0 の画面に合わせたものがある |
+| [クリエイターのたまご：操作方法まとめ](https://belier-imagecreation.com/premierepro_biboroku-matome/) | やりたいことの見出しから記事を引ける |
+| [Frame World：エフェクトとトランジションの対応表](https://www.framewld.com/pr262-fx-transition/) | 26.0 で変わった名前を、古い名前から引ける |
+
+調べるときに知っておくこと
+
+- 26.0 でエフェクトとトランジションの名前と場所が変わったので、2025年以前の記事にある名前は見つからないことがある
+- 文字や図形の設定は、古い記事のエッセンシャルグラフィックスではなく、今は **プロパティパネル** でする
+- 2026年1月から名前が「Adobe Premiere」に変わったので、「Premiere Pro」でも検索する
 
 ---
 
