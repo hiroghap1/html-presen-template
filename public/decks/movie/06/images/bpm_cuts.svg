@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="560" viewBox="0 0 1500 560" font-family="Hiragino Sans, Hiragino Kaku Gothic ProN, Noto Sans JP, sans-serif">
+<rect width="1500" height="560" fill="#fff"/>
+<text x="24" y="84" font-size="38" font-weight="bold" fill="#333">BPM 60</text>
+<text x="24" y="124" font-size="23" fill="#666">ゆっくり</text>
+<rect x="300.0" y="40" width="159.3" height="92" rx="8" fill="#6C8EAD" opacity="0.92"/>
+<text x="379.6" y="98" text-anchor="middle" font-size="27" fill="#fff" font-weight="bold">1</text>
+<rect x="464.3" y="40" width="159.3" height="92" rx="8" fill="#6C8EAD" opacity="0.68"/>
+<text x="543.9" y="98" text-anchor="middle" font-size="27" fill="#fff" font-weight="bold">2</text>
+<rect x="628.6" y="40" width="159.3" height="92" rx="8" fill="#6C8EAD" opacity="0.92"/>
+<text x="708.2" y="98" text-anchor="middle" font-size="27" fill="#fff" font-weight="bold">3</text>
+<rect x="792.9" y="40" width="159.3" height="92" rx="8" fill="#6C8EAD" opacity="0.68"/>
+<text x="872.5" y="98" text-anchor="middle" font-size="27" fill="#fff" font-weight="bold">4</text>
+<rect x="957.1" y="40" width="159.3" height="92" rx="8" fill="#6C8EAD" opacity="0.92"/>
+<text x="1036.8" y="98" text-anchor="middle" font-size="27" fill="#fff" font-weight="bold">5</text>
+<rect x="1121.4" y="40" width="159.3" height="92" rx="8" fill="#6C8EAD" opacity="0.68"/>
+<text x="1201.1" y="98" text-anchor="middle" font-size="27" fill="#fff" font-weight="bold">6</text>
+<rect x="1285.7" y="40" width="159.3" height="92" rx="8" fill="#6C8EAD" opacity="0.92"/>
+<text x="1365.4" y="98" text-anchor="middle" font-size="27" fill="#fff" font-weight="bold">7</text>
+<text x="300" y="168" font-size="26" fill="#333">1小節 4.00秒 ── 1小節に1カットなら 7カット</text>
+<text x="24" y="244" font-size="38" font-weight="bold" fill="#333">BPM 78</text>
+<text x="24" y="284" font-size="23" fill="#666">配布の419</text>
+<rect x="300.0" y="200" width="121.4" height="92" rx="8" fill="#E8833A" opacity="0.92"/>
+<text x="360.7" y="258" text-anchor="middle" font-size="27" fill="#fff" font-weight="bold">1</text>
+<rect x="426.4" y="200" width="121.4" height="92" rx="8" fill="#E8833A" opacity="0.68"/>
+<text x="487.1" y="258" text-anchor="middle" font-size="27" fill="#fff" font-weight="bold">2</text>
+<rect x="552.7" y="200" width="121.4" height="92" rx="8" fill="#E8833A" opacity="0.92"/>
+<text x="613.4" y="258" text-anchor="middle" font-size="27" fill="#fff" font-weight="bold">3</text>
+<rect x="679.1" y="200" width="121.4" height="92" rx="8" fill="#E8833A" opacity="0.68"/>
+<text x="739.8" y="258" text-anchor="middle" font-size="27" fill="#fff" font-weight="bold">4</text>
+<rect x="805.5" y="200" width="121.4" height="92" rx="8" fill="#E8833A" opacity="0.92"/>
+<text x="866.2" y="258" text-anchor="middle" font-size="27" fill="#fff" font-weight="bold">5</text>
+<rect x="931.9" y="200" width="121.4" height="92" rx="8" fill="#E8833A" opacity="0.68"/>
+<text x="992.6" y="258" text-anchor="middle" font-size="27" fill="#fff" font-weight="bold">6</text>
+<rect x="1058.2" y="200" width="121.4" height="92" rx="8" fill="#E8833A" opacity="0.92"/>
+<text x="1118.9" y="258" text-anchor="middle" font-size="27" fill="#fff" font-weight="bold">7</text>
+<rect x="1184.6" y="200" width="121.4" height="92" rx="8" fill="#E8833A" opacity="0.68"/>
+<text x="1245.3" y="258" text-anchor="middle" font-size="27" fill="#fff" font-weight="bold">8</text>
+<rect x="1311.0" y="200" width="121.4" height="92" rx="8" fill="#E8833A" opacity="0.92"/>
+<text x="1371.7" y="258" text-anchor="middle" font-size="27" fill="#fff" font-weight="bold">9</text>
+<text x="300" y="328" font-size="26" fill="#333">1小節 3.08秒 ── 1小節に1カットなら 9カット</text>
+<text x="24" y="404" font-size="38" font-weight="bold" fill="#333">BPM 120</text>
+<text x="24" y="444" font-size="23" fill="#666">速い</text>
+<rect x="300.0" y="360" width="77.1" height="92" rx="8" fill="#B5533C" opacity="0.92"/>
+<rect x="382.1" y="360" width="77.1" height="92" rx="8" fill="#B5533C" opacity="0.68"/>
+<rect x="464.3" y="360" width="77.1" height="92" rx="8" fill="#B5533C" opacity="0.92"/>
+<rect x="546.4" y="360" width="77.1" height="92" rx="8" fill="#B5533C" opacity="0.68"/>
+<rect x="628.6" y="360" width="77.1" height="92" rx="8" fill="#B5533C" opacity="0.92"/>
+<rect x="710.7" y="360" width="77.1" height="92" rx="8" fill="#B5533C" opacity="0.68"/>
+<rect x="792.9" y="360" width="77.1" height="92" rx="8" fill="#B5533C" opacity="0.92"/>
+<rect x="875.0" y="360" width="77.1" height="92" rx="8" fill="#B5533C" opacity="0.68"/>
+<rect x="957.1" y="360" width="77.1" height="92" rx="8" fill="#B5533C" opacity="0.92"/>
+<rect x="1039.3" y="360" width="77.1" height="92" rx="8" fill="#B5533C" opacity="0.68"/>
+<rect x="1121.4" y="360" width="77.1" height="92" rx="8" fill="#B5533C" opacity="0.92"/>
+<rect x="1203.6" y="360" width="77.1" height="92" rx="8" fill="#B5533C" opacity="0.68"/>
+<rect x="1285.7" y="360" width="77.1" height="92" rx="8" fill="#B5533C" opacity="0.92"/>
+<rect x="1367.9" y="360" width="77.1" height="92" rx="8" fill="#B5533C" opacity="0.68"/>
+<text x="300" y="488" font-size="26" fill="#333">1小節 2.00秒 ── 1小節に1カットなら 14カット</text>
+</svg>

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="264" viewBox="0 0 1500 264" font-family="Hiragino Sans, Hiragino Kaku Gothic ProN, Noto Sans JP, sans-serif">
+<rect x="12" y="24" width="250" height="216" rx="20" fill="#fff" stroke="#E8833A" stroke-width="6"/>
+<text x="137.0" y="100" text-anchor="middle" font-size="54">✏️</text>
+<text x="137.0" y="162" text-anchor="middle" font-size="27" font-weight="bold" fill="#333">言葉を3つ</text>
+<text x="137.0" y="206" text-anchor="middle" font-size="19" fill="#666">2行から考える</text>
+<line x1="274" y1="132" x2="294" y2="132" stroke="#333" stroke-width="5"/>
+<polygon points="292,121 307,132 292,143" fill="#333"/>
+<rect x="320" y="24" width="250" height="216" rx="20" fill="#fff" stroke="#E8833A" stroke-width="6"/>
+<text x="445.0" y="100" text-anchor="middle" font-size="54">🎧</text>
+<text x="445.0" y="162" text-anchor="middle" font-size="27" font-weight="bold" fill="#333">候補を3曲</text>
+<text x="445.0" y="206" text-anchor="middle" font-size="19" fill="#666">頭の10秒で選ぶ</text>
+<line x1="582" y1="132" x2="602" y2="132" stroke="#333" stroke-width="5"/>
+<polygon points="600,121 615,132 600,143" fill="#333"/>
+<rect x="628" y="24" width="250" height="216" rx="20" fill="#fff" stroke="#E8833A" stroke-width="6"/>
+<text x="753.0" y="100" text-anchor="middle" font-size="54">🎵</text>
+<text x="753.0" y="162" text-anchor="middle" font-size="27" font-weight="bold" fill="#333">1曲をあてる</text>
+<text x="753.0" y="206" text-anchor="middle" font-size="19" fill="#666">v1で通して聴く</text>
+<line x1="890" y1="132" x2="910" y2="132" stroke="#333" stroke-width="5"/>
+<polygon points="908,121 923,132 908,143" fill="#333"/>
+<rect x="936" y="24" width="250" height="216" rx="20" fill="#fff" stroke="#E8833A" stroke-width="6"/>
+<text x="1061.0" y="100" text-anchor="middle" font-size="54">📏</text>
+<text x="1061.0" y="162" text-anchor="middle" font-size="27" font-weight="bold" fill="#333">1小節を測る</text>
+<text x="1061.0" y="206" text-anchor="middle" font-size="19" fill="#666">マーカー5つ</text>
+<line x1="1198" y1="132" x2="1218" y2="132" stroke="#333" stroke-width="5"/>
+<polygon points="1216,121 1231,132 1216,143" fill="#333"/>
+<rect x="1244" y="24" width="250" height="216" rx="20" fill="#fff" stroke="#E8833A" stroke-width="6"/>
+<text x="1369.0" y="100" text-anchor="middle" font-size="54">📝</text>
+<text x="1369.0" y="162" text-anchor="middle" font-size="27" font-weight="bold" fill="#333">曲カード</text>
+<text x="1369.0" y="206" text-anchor="middle" font-size="19" fill="#666">出典を残して提出</text>
+</svg>
