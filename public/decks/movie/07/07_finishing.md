@@ -12,6 +12,8 @@ style: |
   section.work h1 { color: #E8833A; }
   section.opt { border-left: 22px solid #4A86C5; }
   section.opt h1 { color: #3A73B0; }
+  section.ref { border-left: 22px solid #5B9A68; }
+  section.ref h1 { color: #3F7A4C; }
   table { font-size: 20px; }
   blockquote { border-left: 6px solid #E8833A; background: #fff8f2; padding: 8px 16px; }
   kbd { font-size: 0.9em; }
@@ -93,8 +95,8 @@ style: |
 
 <style scoped>
 table { font-size: 17px !important; }
-td, th { padding: 2px 12px !important; }
-p { margin: 6px 0 !important; }
+td, th { padding: 1px 12px !important; }
+p { margin: 4px 0 !important; }
 </style>
 
 # 目次
@@ -122,9 +124,11 @@ p { margin: 6px 0 !important; }
 | 色 | 昭和の写真のような色にしたいとき | <a href="#25" data-to="color1">P25</a>〜<a href="#27" data-to="color3">P27</a> |
 | 動き | テロップや写真に動きを足したいとき | <a href="#28" data-to="motion">P28</a> |
 
-</div>
+**やってみたい表現の参考**（Premiereでの入り口と、説明のページへのリンク）：<a href="#29" data-to="ref">P29</a>〜<a href="#33" data-to="ref4">P33</a>
 
-困ったときは <a href="#29" data-to="help">P29</a> を見てください。各ページの右下の「目次へ」で、このページに戻れます
+困ったときは <a href="#34" data-to="help">P34</a> を見てください。各ページの右下の「目次へ」で、このページに戻れます
+
+</div>
 
 ---
 
@@ -592,6 +596,146 @@ V2 の調整レイヤーを選び、エフェクトコントロールの **Lumet
 
 ---
 
+<!-- _class: ref -->
+<!-- anchor: ref -->
+
+<a class="back" href="#7" data-to="toc">目次へ</a>
+
+# やってみたい表現の参考
+
+試したい表現の、Premiereでの入り口と、くわしい説明のページへのリンクです
+
+| やってみたいこと | ページ |
+|---|---|
+| 速さを変える・止める、写真を動かす、横の素材を縦にする、手ぶれを抑える、画面を分ける、ぼかす | <a href="#30" data-to="ref1">P30</a> |
+| 昭和・レトロらしい見た目にする | <a href="#31" data-to="ref2">P31</a> |
+| 文字の出し方や見た目を変える | <a href="#32" data-to="ref3">P32</a> |
+| つなぎ方と音を工夫する | <a href="#33" data-to="ref4">P33</a> |
+
+<div class="small">
+
+- 試す前に、プロジェクトパネルで `yokocho_v2` を右クリック ＞ **複製** しておくと、元に戻れます
+- エフェクトとトランジションは、エフェクトパネルの検索欄に名前を打つと見つかります
+- 「公式」はAdobeのヘルプ（<a href="https://helpx.adobe.com/jp/premiere/desktop.html" target="_blank">Premiere デスクトップヘルプ</a>）です。ヘルプや古いブログは、教室のPremiereと画面が違ったり、エフェクトがなくなっていたりすることがあります
+- ここにない表現は、「Premiere」とやりたいことの言葉で検索してください（例：Premiere 画面分割）。撮り方とつなぎ方の見本の動画は、<a href="?deck=decks/movie/camerawork/camerawork_transition.md" target="_blank">カメラワークとトランジション一覧</a>（次のページからは「一覧」と書いています）にあります
+
+</div>
+
+---
+
+<!-- _class: ref -->
+<!-- anchor: ref1 -->
+
+<a class="back" href="#7" data-to="toc">目次へ</a>
+
+<style scoped>
+table { font-size: 16px !important; }
+td, th { padding: 3px 10px !important; }
+</style>
+
+# 参考：速さと画面
+
+| やってみたいこと | Premiereでの入り口 | 参考 |
+|---|---|---|
+| スロー・早回し・逆再生 | クリップを右クリック ＞ **速度・デュレーション**。逆再生は **反転速度** にチェックを入れます | <a href="https://helpx.adobe.com/jp/premiere/desktop/edit-projects/change-clip-speed/change-clip-speed-using-the-speedduration-option.html" target="_blank">公式</a>、<a href="https://vook.vc/n/5832" target="_blank">Vook</a>、<a href="?deck=decks/movie/camerawork/camerawork_transition.md" target="_blank">一覧 P8</a> |
+| 途中で止める | 止めたい位置に再生ヘッドを置き、クリップを右クリック ＞ **フレーム保持セグメントを挿入** | <a href="https://helpx.adobe.com/jp/premiere/desktop/edit-projects/change-clip-speed/freeze-a-video-frame-for-the-duration-of-a-clip.html" target="_blank">公式</a>、<a href="?deck=decks/movie/camerawork/camerawork_transition.md" target="_blank">一覧 P8</a> |
+| 途中で速さを変える | クリップを右クリック ＞ **クリップキーフレームを表示** ＞ **タイムリマップ** ＞ **速度** | <a href="https://helpx.adobe.com/jp/premiere/desktop/edit-projects/change-clip-speed/change-clip-speed-and-duration-using-time-remapping.html" target="_blank">公式</a>、<a href="?deck=decks/movie/camerawork/camerawork_transition.md" target="_blank">一覧 P8</a> |
+| 写真をゆっくり動かす | スケールと位置にキーフレームを打ちます（<a href="#28" data-to="motion">P28</a> のズームパンチと同じ打ち方） | <a href="https://vook.vc/n/6087" target="_blank">Vook</a> |
+| 横の素材を縦の画面に合わせる | エフェクト **オートリフレーム** をクリップにドラッグします | <a href="https://helpx.adobe.com/jp/premiere/desktop/add-video-effects/commonly-used-effects/add-auto-reframe-effect-to-a-clip.html" target="_blank">公式</a> |
+| 手ぶれを抑える | エフェクト **ワープスタビライザー** をクリップにドラッグします（分析に時間がかかります） | <a href="https://helpx.adobe.com/jp/premiere/desktop/add-video-effects/commonly-used-effects/stabilize-shaky-footage-using-warp-stabilizer.html" target="_blank">公式</a> |
+| 画面を上下に分ける | 2つのクリップを上下のトラックに重ね、上のクリップにエフェクト **クロップ** をかけて半分にし、位置を動かします | <a href="https://helpx.adobe.com/jp/premiere/desktop/add-video-effects/effects-and-transitions-library/transform-effects.html" target="_blank">公式</a>、<a href="https://vook.vc/n/5920" target="_blank">Vook</a> |
+| 背景や一部をぼかす | エフェクト **ブラー (ガウス)** をかけ、マスクで範囲を決めます（<a href="#24" data-to="hide3">P24</a> のモザイクと同じ手順） | <a href="https://helpx.adobe.com/jp/premiere/desktop/add-video-effects/effects-and-transitions-library/blur-and-sharpen-effects.html" target="_blank">公式</a>、<a href="https://vook.vc/n/5717" target="_blank">Vook</a> |
+
+---
+
+<!-- _class: ref -->
+<!-- anchor: ref2 -->
+
+<a class="back" href="#7" data-to="toc">目次へ</a>
+
+<style scoped>
+table { font-size: 16px !important; }
+td, th { padding: 3px 10px !important; }
+</style>
+
+# 参考：昭和・レトロらしい見た目
+
+| やってみたいこと | Premiereでの入り口 | 参考 |
+|---|---|---|
+| 昭和の写真のような色 | 調整レイヤーに **Lumetri カラー** をかけます（<a href="#25" data-to="color1">P25</a>〜<a href="#27" data-to="color3">P27</a>） | <a href="https://helpx.adobe.com/jp/premiere/desktop/correct-color/color-correction-fundamentals/basic-color-correction-options.html" target="_blank">公式</a> |
+| 白黒にする | Lumetri カラーの 基本補正 ＞ カラー ＞ **彩度** を 0 にします | <a href="https://helpx.adobe.com/jp/premiere/desktop/correct-color/color-correction-fundamentals/basic-color-correction-options.html" target="_blank">公式</a> |
+| セピアにする | 彩度を 0 にしたあと、クリエイティブ ＞ 調整 ＞ **ハイライト色相調整** で、黄色からオレンジのあたりを選びます | <a href="https://helpx.adobe.com/jp/premiere/desktop/correct-color/add-color-effects/apply-lumetri-looks.html" target="_blank">公式</a> |
+| フィルムの粒子を足す | エフェクト **ノイズ** をかけ、量を少しにします | <a href="https://helpx.adobe.com/jp/premiere/desktop/add-video-effects/effects-and-transitions-library/noise-and-grain-effects.html" target="_blank">公式</a> |
+| 光が漏れたような明るさ | エフェクト **ライトリーク** | <a href="https://helpx.adobe.com/jp/premiere/desktop/add-video-effects/types-of-effects/effects.html" target="_blank">公式</a> |
+| ビデオテープやブラウン管テレビのようなつなぎ | トランジション **VHS 劣化**、**テレビ電源** | <a href="https://helpx.adobe.com/jp/premiere/desktop/add-video-effects/types-of-effects/transitions.html" target="_blank">公式</a>、<a href="https://www.framewld.com/pr255upd/" target="_blank">Frame World</a> |
+
+<div class="small">
+
+- ライトリーク・VHS 劣化・テレビ電源は、Premiere 25.5 から入っている効果です。公式のヘルプでは「VHS の損傷」と書かれています
+- かけすぎると、駄菓子やおもちゃの色や形が分かりにくくなります。商品が写っているカットで確かめてください
+
+</div>
+
+---
+
+<!-- _class: ref -->
+<!-- anchor: ref3 -->
+
+<a class="back" href="#7" data-to="toc">目次へ</a>
+
+<style scoped>
+table { font-size: 16px !important; }
+td, th { padding: 3px 10px !important; }
+</style>
+
+# 参考：文字
+
+| やってみたいこと | Premiereでの入り口 | 参考 |
+|---|---|---|
+| 1文字ずつ出す | テロップのクリップの頭に、トランジション **タイプライター** をドラッグします | <a href="https://helpx.adobe.com/jp/premiere/desktop/add-video-effects/types-of-effects/transitions.html" target="_blank">公式</a>、<a href="https://moviction.com/premiere-pro/typewriter/" target="_blank">MOVICTION</a> |
+| 文字に動きを付ける | トランジション **テキストアニメーター**。<a href="#28" data-to="motion">P28</a> の「ポンと出す」も使えます | <a href="https://helpx.adobe.com/jp/premiere/desktop/add-video-effects/types-of-effects/transitions.html" target="_blank">公式</a> |
+| 文字の背景や影を整える | プロパティパネルの **背景**（角を丸くできます）と **シャドウ** | <a href="https://www.adobe.com/jp/learn/premiere-pro/web/jp-telop-edit" target="_blank">Adobe Learn</a> |
+| 縦書きにする | ツールパネルの横書き文字ツールを長押しして、**縦書き文字ツール** を選びます | — |
+| テンプレートを使う | ウィンドウ ＞ **グラフィックテンプレート** から、テンプレートをタイムラインにドラッグし、プロパティパネルで文字を打ち替えます | <a href="https://helpx.adobe.com/jp/premiere/desktop/add-text-images/use-motion-graphics-templates/add-motion-graphic-templates-to-a-sequence.html" target="_blank">公式</a> |
+| 書体を増やす | Creative Cloud のアプリで Adobe Fonts の書体を追加すると、Premiereでも使えます | <a href="https://helpx.adobe.com/jp/fonts/web/introduction/add-fonts-desktop.html" target="_blank">公式</a> |
+
+<div class="small">
+
+- 大きさ・位置・出しておく長さの目安は、<a href="#13" data-to="w3">作業3</a> と同じです
+
+</div>
+
+---
+
+<!-- _class: ref -->
+<!-- anchor: ref4 -->
+
+<a class="back" href="#7" data-to="toc">目次へ</a>
+
+<style scoped>
+table { font-size: 16px !important; }
+td, th { padding: 3px 10px !important; }
+</style>
+
+# 参考：つなぎ方と音
+
+| やってみたいこと | Premiereでの入り口 | 参考 |
+|---|---|---|
+| 切り替えの効果を探す | エフェクトパネル ＞ **ビデオトランジション** から、つなぎ目にドラッグします | <a href="https://helpx.adobe.com/jp/premiere/desktop/add-video-effects/effects-and-transitions-library/list-of-video-transitions.html" target="_blank">公式</a>、<a href="?deck=decks/movie/camerawork/camerawork_transition.md" target="_blank">一覧 P12〜P19</a> |
+| 次のカットの音を先に聞かせる | 音のつなぎ目だけを、前か後ろに動かします（Jカット・Lカット） | <a href="?deck=decks/movie/camerawork/camerawork_transition.md" target="_blank">一覧 P11</a> |
+| 効果音を増やす | <a href="https://soundeffect-lab.info/" target="_blank">効果音ラボ</a>、<a href="https://www.springin.org/sound-stock/" target="_blank">Springin' Sound Stock</a> は、学校のSNSでの公開にも使え、クレジットは要りません | <a href="https://soundeffect-lab.info/agreement/" target="_blank">効果音ラボの規約</a>、<a href="https://www.springin.org/sound-stock/guideline/" target="_blank">Springin'の規約</a> |
+| 曲を自動で小さくする | エッセンシャルサウンドで、曲を **ミュージック**、スマホの音を **会話** にして、ミュージックの **ダッキング** ＞ **キーフレームを生成** | <a href="https://helpx.adobe.com/jp/premiere/desktop/add-audio-effects/adjust-volume-and-levels/automatically-duck-audio.html" target="_blank">公式</a> |
+| 雑音を減らす | エッセンシャルサウンドで **会話** にして、**ノイズを軽減** にチェックを入れます | <a href="https://helpx.adobe.com/jp/premiere/desktop/add-audio-effects/adjust-volume-and-levels/repair-dialogue.html" target="_blank">公式</a> |
+
+<div class="small">
+
+- 使った効果音は、提出するGoogleドキュメントの「効果音」の欄に、サイト名と効果音の名前を書いてください
+- ほかのサイトの効果音を使うときは、利用規約で、商用利用できるか、クレジットが要るかを確かめてください
+
+</div>
+
+---
+
 <!-- anchor: help -->
 
 <a class="back" href="#7" data-to="toc">目次へ</a>
@@ -602,6 +746,7 @@ V2 の調整レイヤーを選び、エフェクトコントロールの **Lumet
 |---|---|
 | Premiereが固まった・落ちた | Premiereを開き直してください。保存し忘れたときは、プロジェクトと同じフォルダの `Adobe Premiere Pro Auto-Save` から、いちばん新しいものを開きます |
 | 映像が赤い画面になり「メディアオフライン」と出た | クリップを右クリック ＞ **メディアをリンク** で、素材のファイルを選び直してください |
+| ほかの表現を試したい | <a href="#29" data-to="ref">P29</a>〜<a href="#33" data-to="ref4">P33</a> の参考を見てください |
 | 操作の画面写真を見たい | 第6回のスライド：テロップ P8〜P12、音 P13〜P14、動き P16〜P22、書き出し P25、曲 P39〜P42 （<a href="?deck=decks/movie/06/06_handson_music.md" target="_blank">第6回のスライドを開く</a>） |
 
 - いつでも聞いてください。教室の人は手を挙げ、オンラインの人はZoomのチャットに書くか、Zoomの リアクション ＞ **手を挙げる** を押してください
